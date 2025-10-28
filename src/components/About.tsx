@@ -24,18 +24,18 @@ const loadGalleryImages = async (): Promise<Photo[]> => {
     console.log('No manifest.json found for slideshow background');
   }
 
-  // Fallback to known images
+  // Fallback to current gallery images
   return [
-    { id: 1, src: '/gallery/1.jpg', alt: 'Background Photo 1' },
-    { id: 2, src: '/gallery/2.JPG', alt: 'Background Photo 2' },
-    { id: 3, src: '/gallery/3.JPG', alt: 'Background Photo 3' },
-    { id: 4, src: '/gallery/4.JPG', alt: 'Background Photo 4' },
-    { id: 5, src: '/gallery/5.JPG', alt: 'Background Photo 5' },
-    { id: 6, src: '/gallery/6.jpg', alt: 'Background Photo 6' },
-    { id: 7, src: '/gallery/7.jpg', alt: 'Background Photo 7' },
-    { id: 8, src: '/gallery/8.jpg', alt: 'Background Photo 8' },
-    { id: 9, src: '/gallery/9.jpg', alt: 'Background Photo 9' },
-    { id: 10, src: '/gallery/10.jpg', alt: 'Background Photo 10' }
+    { id: 1, src: '/gallery/MAT05257.jpg', alt: 'Background Photo 1' },
+    { id: 2, src: '/gallery/MAT05441.jpg', alt: 'Background Photo 2' },
+    { id: 3, src: '/gallery/MAT05504.jpg', alt: 'Background Photo 3' },
+    { id: 4, src: '/gallery/MAT05592.jpg', alt: 'Background Photo 4' },
+    { id: 5, src: '/gallery/MAT05660.jpg', alt: 'Background Photo 5' },
+    { id: 6, src: '/gallery/MAT05895.jpg', alt: 'Background Photo 6' },
+    { id: 7, src: '/gallery/MAT05979.jpg', alt: 'Background Photo 7' },
+    { id: 8, src: '/gallery/MAT06071.jpg', alt: 'Background Photo 8' },
+    { id: 9, src: '/gallery/MAT06227.jpg', alt: 'Background Photo 9' },
+    { id: 10, src: '/gallery/MAT06244.jpg', alt: 'Background Photo 10' }
   ];
 };
 

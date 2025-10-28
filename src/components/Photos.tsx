@@ -8,74 +8,60 @@ interface Photo {
   alt: string;
 }
 
-// Dynamic image loading function
+// Function to shuffle array using Fisher-Yates algorithm
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Dynamic image loading function with specified gallery images
 const loadGalleryImages = async (): Promise<Photo[]> => {
+  // Predefined list of all images in the gallery folder
+  const galleryImageFilenames = [
+    'MAT05257.jpg',
+    'MAT05441.jpg',
+    'MAT05504.jpg',
+    'MAT05592.jpg',
+    'MAT05660.jpg',
+    'MAT05895.jpg',
+    'MAT05979.jpg',
+    'MAT06071.jpg',
+    'MAT06227.jpg',
+    'MAT06244.jpg'
+  ];
+
   try {
-    // Try to fetch a gallery manifest file first
+    // Try to fetch a gallery manifest file first (if it exists)
     const response = await fetch('/gallery/manifest.json');
     if (response.ok) {
       const manifest = await response.json();
-      return manifest.images.map((filename: string, index: number) => ({
+      const manifestImages = manifest.images.map((filename: string, index: number) => ({
         id: index + 1,
         src: `/gallery/${filename}`,
         alt: `Wedding Photo ${index + 1}`
       }));
+      // Randomize the manifest images
+      return shuffleArray(manifestImages);
     }
   } catch (error) {
-    console.log('No manifest.json found, trying to auto-discover images...');
+    console.log('No manifest.json found, using predefined image list...');
   }
 
-  // Fallback: Try to load common image filenames
-  const commonFilenames = [
-    '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
-    '1.JPG', '2.JPG', '3.JPG', '4.JPG', '5.JPG', '6.JPG', '7.JPG', '8.JPG', '9.JPG', '10.JPG',
-    '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', '9.png', '10.png',
-    '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg'
-  ];
+  // Use the predefined list of gallery images
+  const galleryImages = galleryImageFilenames.map((filename, index) => ({
+    id: index + 1,
+    src: `/gallery/${filename}`,
+    alt: `Wedding Photo ${index + 1}`
+  }));
 
-  const validImages: Photo[] = [];
-  let imageId = 1;
-
-  // Test each potential filename
-  for (const filename of commonFilenames) {
-    try {
-      const img = new Image();
-      const imageUrl = `/gallery/${filename}`;
-      
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = imageUrl;
-      });
-
-      validImages.push({
-        id: imageId++,
-        src: imageUrl,
-        alt: `Wedding Photo ${imageId - 1}`
-      });
-    } catch (error) {
-      // Image doesn't exist, continue to next
-      continue;
-    }
-  }
-
-  if (validImages.length === 0) {
-    // Final fallback to known existing images
-    return [
-      { id: 1, src: '/gallery/1.jpg', alt: 'Wedding Photo 1' },
-      { id: 2, src: '/gallery/2.JPG', alt: 'Wedding Photo 2' },
-      { id: 3, src: '/gallery/3.JPG', alt: 'Wedding Photo 3' },
-      { id: 4, src: '/gallery/4.JPG', alt: 'Wedding Photo 4' },
-      { id: 5, src: '/gallery/5.JPG', alt: 'Wedding Photo 5' },
-      { id: 6, src: '/gallery/6.jpg', alt: 'Wedding Photo 6' },
-      { id: 7, src: '/gallery/7.jpg', alt: 'Wedding Photo 7' },
-      { id: 8, src: '/gallery/8.jpg', alt: 'Wedding Photo 8' },
-      { id: 9, src: '/gallery/9.jpg', alt: 'Wedding Photo 9' },
-      { id: 10, src: '/gallery/10.jpg', alt: 'Wedding Photo 10' }
-    ];
-  }
-
-  return validImages;
+  // Randomize the image order and return
+  const shuffledImages = shuffleArray(galleryImages);
+  console.log(`Loaded and randomized ${shuffledImages.length} images from gallery`);
+  return shuffledImages;
 };
 
 // Individual tile component with smooth image cycling

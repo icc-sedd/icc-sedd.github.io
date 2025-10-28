@@ -2,7 +2,28 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const Entourage: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [backgroundOffset, setBackgroundOffset] = useState(0);
+
+  // Parallax scroll effect for background image
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5; // Adjust this value to control parallax speed
+        
+        // Only apply parallax when section is in viewport
+        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+          setBackgroundOffset(rate);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -42,7 +63,17 @@ const Entourage: React.FC = () => {
   }, [isAnimated]);
 
   return (
-    <section id="entourage" className="section">
+    <section 
+      id="entourage" 
+      className="section"
+      ref={sectionRef}
+      style={{
+        background: `linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%), url('/gallery/MAT05257.jpg') center/cover`,
+        backgroundAttachment: 'scroll',
+        backgroundPosition: `center ${backgroundOffset}px`,
+        backgroundBlendMode: 'overlay'
+      }}
+    >
       <div className="container entourage-content" ref={contentRef}>
         <h2>Our Entourage</h2>
         

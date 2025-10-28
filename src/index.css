@@ -100,8 +100,8 @@ body {
 }
 
 .header h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 5rem;
+  font-family: "Slabo 27px", serif;
+  font-size: 7rem;
   margin-bottom: 0.5rem;
   font-weight: 400;
   text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
@@ -589,7 +589,7 @@ body {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center right; /* Focus on right side of image */
+  background-position: center 30%; /* Focus on upper-center area where faces are typically located */
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease-in-out;
@@ -746,6 +746,25 @@ body {
   overflow: visible;
   align-items: flex-start;
   padding: 30px 0 3rem 0;
+  position: relative;
+}
+
+/* Add overlay for better text readability */
+.section#entourage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+/* Ensure content is above the overlay */
+.section#entourage .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* What to Wear Section - Allow flexible height */
@@ -780,6 +799,8 @@ body {
   height: auto;
   justify-content: flex-start;
   padding-top: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* What to Wear section container - Allow flexible height */
