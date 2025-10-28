@@ -2,15 +2,17 @@
   "name": "weddingsite",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://icc-sedd.github.io",
   "description": "A beautiful wedding website built with React and TypeScript",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:gh-pages": "npm run set-homepage && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-gallery": "node generate-gallery-manifest.js",
-    "predeploy": "npm run build",
+    "set-homepage": "npm pkg set homepage=https://icc-sedd.github.io/MaraAndSedd",
+    "remove-homepage": "npm pkg delete homepage",
+    "predeploy": "npm run build:gh-pages",
     "deploy": "gh-pages -d build"
   },
   "keywords": [
