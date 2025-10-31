@@ -58,54 +58,102 @@ const Details: React.FC = () => {
           <SimpleGuestLookup />
         </div>
         
-        <div className="card details-animate-item">
-          <h3>Ceremony</h3>
-          <div className="map-section-2col">
-            <div className="map-details">
-              <p><strong>Venue:</strong> Our Lady of Sorrows Parish Church</p>
-              <p><strong>Date:</strong> Friday, December 13, 2025</p>
-              <p><strong>Time:</strong> 2:00 PM</p>
-              <p><strong>Address:</strong> 2130 F.B. Harrison St, Pasay City, Metro Manila</p>              
-              <a 
-                href="https://maps.app.goo.gl/ksbcdo1fJZp9PRMX6" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="map-link"
-              >
-                📍 Open in Google Maps
-              </a>
+        <div className="wedding-venues-section details-animate-item">
+          <div className="venues-grid">
+            {/* Ceremony Card */}
+            <div className="venue-card ceremony-card">
+              <div className="venue-header">
+                <div className="venue-icon">⛪</div>
+                <div className="venue-title">
+                  <h3>Ceremony</h3>
+                  <span className="venue-type">Sacred Vows</span>
+                </div>
+              </div>
+              
+              <div className="venue-content">
+                <div className="venue-info">
+                  <div className="info-item">
+                    <div className="info-icon">📍</div>
+                    <div className="info-text">
+                      <strong>Our Lady of Sorrows Parish Church</strong>
+                      <p>2130 F.B. Harrison St, Pasay City, Metro Manila</p>
+                    </div>
+                  </div>
+                  
+                  <div className="info-item">
+                    <div className="info-icon">📅</div>
+                    <div className="info-text">
+                      <strong>Friday, December 13, 2025</strong>
+                      <p>2:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="venue-map">
+                  <Map 
+                    googleMapsUrl="https://maps.app.goo.gl/ksbcdo1fJZp9PRMX6"
+                    title="Church Location"
+                  />
+                  <div className="map-overlay">
+                    <a 
+                      href="https://maps.app.goo.gl/ksbcdo1fJZp9PRMX6" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="map-button"
+                    >
+                      �️ Open in Google Maps
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="map-container">
-              <Map 
-                googleMapsUrl="https://maps.app.goo.gl/ksbcdo1fJZp9PRMX6"
-                title="Church Location"
-              />
-            </div>
-          </div>
-        </div>
 
-        <div className="card details-animate-item">
-          <h3>Reception</h3>
-          <div className="map-section-2col">
-            <div className="map-details">
-            <p><strong>Venue:</strong> Admiral Baysuites (East Wing)</p>
-            <p><strong>Date:</strong> Friday, December 13, 2025</p>
-              <p><strong>Time:</strong> 4:30 PM - 9:00 PM</p>
-              <p><strong>Address:</strong> 2138 Aldecoa St, Malate, Manila, 1004 Metro Manila</p>
-              <a 
-                href="https://maps.app.goo.gl/oecVip2xPSMtoNtj9" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="map-link"
-              >
-                📍 Open in Google Maps
-              </a>
-            </div>
-            <div className="map-container">
-              <Map 
-                googleMapsUrl="https://maps.app.goo.gl/oecVip2xPSMtoNtj9"
-                title="Reception Venue Location"
-              />
+            {/* Reception Card */}
+            <div className="venue-card reception-card">
+              <div className="venue-header">
+                <div className="venue-icon">🥂</div>
+                <div className="venue-title">
+                  <h3>Reception</h3>
+                  <span className="venue-type">Celebration</span>
+                </div>
+              </div>
+              
+              <div className="venue-content">
+                <div className="venue-info">
+                  <div className="info-item">
+                    <div className="info-icon">📍</div>
+                    <div className="info-text">
+                      <strong>Admiral Baysuites (East Wing)</strong>
+                      <p>2138 Aldecoa St, Malate, Manila, Metro Manila</p>
+                    </div>
+                  </div>
+                  
+                  <div className="info-item">
+                    <div className="info-icon">📅</div>
+                    <div className="info-text">
+                      <strong>Friday, December 13, 2025</strong>
+                      <p>4:30 PM - 10:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="venue-map">
+                  <Map 
+                    googleMapsUrl="https://maps.app.goo.gl/oecVip2xPSMtoNtj9"
+                    title="Reception Venue Location"
+                  />
+                  <div className="map-overlay">
+                    <a 
+                      href="https://maps.app.goo.gl/oecVip2xPSMtoNtj9" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="map-button"
+                    >
+                      �️ Open in Google Maps
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

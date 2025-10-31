@@ -168,17 +168,23 @@ const Entourage: React.FC = () => {
             <div className="honor-party-content">
               <div className="honor-section">
                 <h4>Matron of Honor</h4>
-                <p>👑 Danica Rose C. Francia</p>
+                <p>
+                  <span className="person-name">Danica Rose C. Francia</span>
+                </p>
               </div>
               
               <div className="honor-section">
                 <h4>Best Man</h4>
-                <p>🤵 Aljohn Ramos</p>
+                <p>
+                  <span className="person-name">Aljohn Ramos</span>
+                </p>
               </div>
 
               <div className="honor-section">
                 <h4>Maid of Honor</h4>
-                <p>👠 Janine Fababier</p>
+                <p>
+                  <span className="person-name">Janine Fababier</span>
+                </p>
               </div>
               
 
