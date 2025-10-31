@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <defs>
+    <linearGradient id="dressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8e44ad;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6a1b9a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="topGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34495e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f6f3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#eae5df;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accessoryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8941f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="400" fill="url(#backgroundGradient)"/>
+  
+  <!-- Subtle border -->
+  <rect x="10" y="10" width="280" height="380" fill="none" stroke="#d4af37" stroke-width="2" rx="15" opacity="0.3"/>
+  
+  <!-- Elegant Blouse -->
+  <path d="M 90 120 L 210 120 L 220 140 L 215 200 L 85 200 L 80 140 Z" fill="url(#topGradient)" stroke="#1a252f" stroke-width="2"/>
+  
+  <!-- Blouse sleeves -->
+  <ellipse cx="70" cy="150" rx="15" ry="25" fill="url(#topGradient)" stroke="#1a252f" stroke-width="1"/>
+  <ellipse cx="230" cy="150" rx="15" ry="25" fill="url(#topGradient)" stroke="#1a252f" stroke-width="1"/>
+  
+  <!-- Blouse collar -->
+  <path d="M 130 120 L 170 120 L 165 130 L 135 130 Z" fill="url(#topGradient)" stroke="#1a252f" stroke-width="1"/>
+  
+  <!-- Elegant Skirt -->
+  <path d="M 85 200 L 215 200 L 235 240 L 240 320 L 225 340 L 75 340 L 60 320 L 65 240 Z" fill="url(#dressGradient)" stroke="#6a1b9a" stroke-width="2"/>
+  
+  <!-- Skirt pleats -->
+  <line x1="110" y1="200" x2="105" y2="340" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+  <line x1="130" y1="200" x2="125" y2="340" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+  <line x1="150" y1="200" x2="150" y2="340" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+  <line x1="170" y1="200" x2="175" y2="340" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+  <line x1="190" y1="200" x2="195" y2="340" stroke="#6a1b9a" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Belt -->
+  <rect x="85" y="195" width="130" height="10" fill="url(#accessoryGradient)" stroke="#b8941f" stroke-width="1" rx="5"/>
+  <circle cx="150" cy="200" r="4" fill="#d4af37" stroke="#b8941f" stroke-width="1"/>
+  
+  <!-- Blouse buttons -->
+  <circle cx="150" cy="140" r="3" fill="#d4af37" stroke="#b8941f" stroke-width="1"/>
+  <circle cx="150" cy="160" r="3" fill="#d4af37" stroke="#b8941f" stroke-width="1"/>
+  <circle cx="150" cy="180" r="3" fill="#d4af37" stroke="#b8941f" stroke-width="1"/>
+  
+  <!-- Elegant neckline detail -->
+  <path d="M 135 125 Q 150 115 165 125" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Text label -->
+  <text x="150" y="30" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="#b8941f">Women's Cocktail Attire</text>
+  <text x="150" y="50" text-anchor="middle" font-family="serif" font-size="14" fill="#4a3728">Elegant Blouse with Skirt</text>
+  
+  <!-- Decorative floral elements -->
+  <circle cx="40" cy="80" r="5" fill="#d4af37" opacity="0.6"/>
+  <circle cx="45" cy="75" r="3" fill="#b8941f" opacity="0.4"/>
+  <circle cx="35" cy="75" r="3" fill="#b8941f" opacity="0.4"/>
+  
+  <circle cx="260" cy="80" r="5" fill="#d4af37" opacity="0.6"/>
+  <circle cx="265" cy="75" r="3" fill="#b8941f" opacity="0.4"/>
+  <circle cx="255" cy="75" r="3" fill="#b8941f" opacity="0.4"/>
+  
+  <circle cx="40" cy="320" r="5" fill="#d4af37" opacity="0.6"/>
+  <circle cx="45" cy="315" r="3" fill="#b8941f" opacity="0.4"/>
+  <circle cx="35" cy="315" r="3" fill="#b8941f" opacity="0.4"/>
+  
+  <circle cx="260" cy="320" r="5" fill="#d4af37" opacity="0.6"/>
+  <circle cx="265" cy="315" r="3" fill="#b8941f" opacity="0.4"/>
+  <circle cx="255" cy="315" r="3" fill="#b8941f" opacity="0.4"/>
+</svg>
