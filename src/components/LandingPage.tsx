@@ -61,42 +61,43 @@ const LandingPage: React.FC = () => {
       {/* Guest ID Input Section */}
       <section className="section" style={{ minHeight: 'calc(100vh - 80vh)' }}>
         <div className="container">
-          <div className="card" style={{ 
+          <div style={{ 
             maxWidth: '650px', 
             textAlign: 'center', 
             margin: '0 auto',
             background: 'rgba(255, 255, 255, 0.85)',
             backdropFilter: 'blur(10px)',
             borderRadius: '25px',
-            padding: '3rem 2.5rem',
+            padding: 'clamp(1.5rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem)',
             boxShadow: '0 20px 60px rgba(212, 175, 55, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.1)',
             border: '1px solid rgba(212, 175, 55, 0.2)'
           }}>
             <h2 style={{ 
               color: '#b8941f', 
               fontFamily: 'Great Vibes, cursive', 
-              fontSize: '3.5rem', 
+              fontSize: 'clamp(2rem, 8vw, 3.5rem)', 
               marginBottom: '1.5rem',
               textAlign: 'center',
               width: '100%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '1rem',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
               textShadow: '2px 2px 4px rgba(212, 175, 55, 0.2)'
             }}>
             <span className="material-icons" style={{
-              fontSize: '3.5rem',
+              fontSize: 'clamp(2rem, 8vw, 3.5rem)',
               background: 'linear-gradient(135deg, #d4af37, #b8941f)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               filter: 'drop-shadow(2px 2px 4px rgba(212, 175, 55, 0.3))'
             }}>card_membership</span>
-            Private Invitation
+            <span>Private Invitation</span>
             </h2>
             
             <p style={{ 
-              fontSize: '1.2rem', 
+              fontSize: 'clamp(1rem, 4vw, 1.2rem)', 
               color: '#2c2c2c', 
               marginBottom: '2rem',
               lineHeight: '1.6',
@@ -117,19 +118,22 @@ const LandingPage: React.FC = () => {
               <div className="form-group">
                 <label htmlFor="guestId" style={{ 
                   textAlign: 'center', 
-                  fontSize: '1.2rem',
+                  fontSize: 'clamp(1rem, 3vw, 1.2rem)',
                   color: '#2c2c2c',
                   fontWeight: '600',
                   marginBottom: '1rem',
-                  display: 'block'
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                  flexWrap: 'wrap'
                 }}>
                   <span className="material-icons" style={{
                     fontSize: '1.5rem',
                     verticalAlign: 'middle',
-                    marginRight: '0.5rem',
                     color: '#b8941f'
                   }}>confirmation_number</span>
-                  Enter Your Guest ID
+                  <span>Enter Your Guest ID</span>
                 </label>
                 <input
                   type="text"
@@ -141,11 +145,11 @@ const LandingPage: React.FC = () => {
                   maxLength={5}
                   style={{ 
                     textAlign: 'center', 
-                    fontSize: '2rem', 
+                    fontSize: 'clamp(1.5rem, 5vw, 2rem)', 
                     fontWeight: 'bold',
-                    letterSpacing: '0.5rem',
+                    letterSpacing: '0.3rem',
                     textTransform: 'uppercase',
-                    padding: '1rem 2rem',
+                    padding: '1rem',
                     border: '2px solid rgba(212, 175, 55, 0.3)',
                     borderRadius: '15px',
                     background: 'rgba(255, 255, 255, 0.9)',

@@ -330,9 +330,8 @@ body {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
-  min-width: 800px;
   background: rgba(245, 218, 131, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0,0,0,0.1);
@@ -398,6 +397,7 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  margin-left: auto;
 }
 
 .navbar-spacer {
@@ -501,10 +501,18 @@ body {
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
   .navbar {
-    width: 90%;
-    left: 50%;
-    top: 10px;
+    width: 100%;
+    left: 0;
+    top: 0;
     margin: 0;
+    transform: none;
+    padding: 0.6rem 0;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .navbar.scrolled {
+    top: 0;
+    padding: 0.5rem 0;
   }
   
   .navbar-hamburger {
@@ -515,16 +523,20 @@ body {
     position: fixed;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
     background: linear-gradient(135deg, #f5da83 0%, #f2e0a6 100%);
     flex-direction: column;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     gap: 0;
+    max-height: calc(100vh - 100%);
+    overflow-y: auto;
+    border-radius: 0 0 20px 20px;
   }
 
   .navbar-menu.open {
@@ -534,27 +546,44 @@ body {
   }
 
   .navbar-menu li {
-    margin: 0.8rem 0;
+    margin: 0.5rem 1rem;
     text-align: center;
   }
 
   .navbar-menu a {
     display: block;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 0;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    color: #4a3728;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .navbar-menu a:hover {
+    background: rgba(184, 148, 31, 0.1);
+  }
+  
+  .navbar-menu a.active {
+    background: rgba(184, 148, 31, 0.2);
+    font-weight: 600;
+    color: #8b4513;
   }
 
   .brand-text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .brand-date {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 
   .navbar-container {
-    padding: 0 1rem;
+    padding: 0 0.8rem;
+  }
+  
+  .navbar-brand {
+    min-width: auto;
   }
 }
 
@@ -980,6 +1009,8 @@ body {
   align-items: flex-start;
   padding: 30px 0 3rem 0;
   position: relative;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 
 /* Add overlay for better text readability */
@@ -2183,7 +2214,7 @@ body {
   margin: 0 auto;
   position: relative;
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
 }
@@ -2198,7 +2229,6 @@ body {
   background: transparent;
   border-radius: 22px;
   z-index: -1;
-  
 }
 
 .sponsors-list {
@@ -2436,7 +2466,7 @@ body {
 }
 
 .bridal-side li::before, .groom-side li::before {
-  content: 🕶️;
+  content: '🕶️';
   position: absolute;
   left: 0;
   color: #deb887;
@@ -2491,7 +2521,6 @@ body {
   color: #deb887;
 }
 
-
 /* Responsive Entourage Styles */
 @media (max-width: 768px) {
   .principal-sponsors-card {
@@ -2509,7 +2538,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  /* Responsive for custom special roles layout */
   .role-row.double {
     flex-direction: column;
     gap: 1rem;
@@ -2595,38 +2623,6 @@ body {
   
   .bridal-side, .groom-side {
     padding: 1.5rem;
-  }
-  
-  /* About section small mobile styles */
-  .about-content-left {
-    padding: 1rem 1rem 1rem 1.5rem; /* Minimal left padding for small screens */
-    align-items: flex-start; /* Try to maintain left alignment */
-    text-align: left;
-  }
-  
-  .about-content-left h2 {
-    font-size: 2rem;
-    margin-left: 0; /* Align with card */
-  }
-  
-  .about-card-left {
-    width: auto; /* Flexible width */
-    max-width: calc(100% - 2rem); /* Leave some margin */
-    padding: 1.5rem 1rem;
-    margin: 0; /* Keep left alignment even on small screens */
-  }
-  
-  .about-card-left p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  
-  /* Simplify background overlay for small screens */
-  .slideshow-overlay {
-    background: linear-gradient(90deg, 
-      rgba(0, 0, 0, 0.8) 0%, 
-      rgba(0, 0, 0, 0.4) 100%
-    );
   }
 }
 
@@ -3568,4 +3564,47 @@ body {
 .landing-page button:not(:disabled):active {
   transform: translateY(0);
   transition: all 0.1s ease;
+}
+
+/* Animated Gradient Background for Details, WhatToWear, and Photos sections */
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.section#details,
+.section#what-to-wear,
+.section#photos {
+  position: relative;
+  background: linear-gradient(315deg, rgba(139, 69, 19, 1) 3%, rgba(160, 82, 45, 1) 38%, rgba(205, 133, 63, 1) 68%, rgba(210, 180, 140, 1) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+/* Ensure content is above background */
+.section#details .container,
+.section#what-to-wear .container,
+.section#photos .container {
+  position: relative;
+  z-index: 1;
 }
