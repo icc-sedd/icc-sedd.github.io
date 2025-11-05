@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <p>2025 Mara & Sedd's Wedding. Made with ❤️</p>
+        <p>2025 Sedd & Mara's Wedding. Made with ❤️</p>
         <p>Website creator : Sedd Ramos</p>
       </div>
     </footer>

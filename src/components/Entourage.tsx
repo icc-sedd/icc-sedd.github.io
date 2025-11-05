@@ -68,10 +68,9 @@ const Entourage: React.FC = () => {
       className="section"
       ref={sectionRef}
       style={{
-        background: `linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%), url('/gallery/MAT05257.jpg') center/cover`,
+        background: `url('/images/background-silk.png') center/cover`,
         backgroundAttachment: 'scroll',
-        backgroundPosition: `center ${backgroundOffset}px`,
-        backgroundBlendMode: 'overlay'
+        backgroundPosition: `center ${backgroundOffset}px`
       }}
     >
       <div className="container entourage-content" ref={contentRef}>
