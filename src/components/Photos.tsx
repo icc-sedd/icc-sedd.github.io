@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
 const Photos: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   // Gallery images from the src/images/gallery folder
-  const galleryImages = [
+  const galleryImages = useMemo(() => [
     'MAT05252.jpg',
     'MAT05257.jpg',
     'MAT05343.jpg',
@@ -20,7 +22,21 @@ const Photos: React.FC = () => {
     'MAT06172.jpg',
     'MAT06227.jpg',
     'MAT06244.jpg'
-  ];
+  ], []);
+
+  const handleImageClick = (image: string) => {
+    setSelectedImage(image);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setSelectedImage(null);
+    }
+  };
 
   return (
     <section id="photos" className="section">
@@ -39,7 +55,7 @@ const Photos: React.FC = () => {
 
               return (
                 <div key={index} className={`gallery-col ${colClass}`}>
-                  <div className="photo-zoom">
+                  <div className="photo-zoom" onClick={() => handleImageClick(image)}>
                     <img 
                       src={require(`../images/gallery/${image}`)} 
                       alt={`Gallery photo ${index + 1}`}
@@ -52,6 +68,20 @@ const Photos: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div className="lightbox-overlay" onClick={handleBackdropClick}>
+          <div className="lightbox-container">
+            <button className="lightbox-close" onClick={handleCloseModal}>✕</button>
+            <img 
+              src={require(`../images/gallery/${selectedImage}`)} 
+              alt="Preview"
+              className="lightbox-image"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

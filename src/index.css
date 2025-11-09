@@ -3431,6 +3431,187 @@ scale: 2;
   padding-top: 0;
 }
 
+/* Details Section Styling */
+.details-wrapper {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 350px;
+  max-width: 450px;
+  text-align: center;
+}
+
+.details-label {
+  font-family: 'Moontime', cursive;
+  font-size: 2.5rem;
+  color: #b8860b;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.details-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  min-height: 250px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.details-image-container:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);
+}
+
+.details-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 280px;
+  transition: transform 0.3s ease;
+}
+
+.details-image-container:hover .details-image {
+  transform: scale(1.08);
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.venue-name {
+  font-family: 'TAN Angleton', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a3728;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.venue-address {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.venue-time {
+  font-family: 'TAN Angleton', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #b8860b;
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 0 0;
+}
+
+.details-note {
+  font-family: 'Lora', serif;
+  font-size: 0.85rem;
+  color: #999;
+  margin: 1rem 0 0 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .details-wrapper {
+    gap: 2rem;
+  }
+
+  .details-card {
+    min-width: 300px;
+    max-width: 400px;
+  }
+
+  .venue-name {
+    font-size: 1.3rem;
+  }
+
+  .venue-time {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .details-wrapper {
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .details-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .details-label {
+    font-size: 1.3rem;
+  }
+
+  .venue-name {
+    font-size: 1.2rem;
+  }
+
+  .venue-time {
+    font-size: 1.4rem;
+  }
+
+  .details-image-container {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-wrapper {
+    gap: 1.5rem;
+  }
+
+  .details-label {
+    font-size: 1.1rem;
+  }
+
+  .details-image-container {
+    padding: 0.75rem;
+    min-height: 180px;
+  }
+
+  .details-image {
+    max-height: 200px;
+  }
+
+  .venue-name {
+    font-size: 1rem;
+  }
+
+  .venue-address {
+    font-size: 0.9rem;
+  }
+
+  .venue-time {
+    font-size: 1.3rem;
+  }
+}
+
 /* ==========================================================================
    PHOTOS/GALLERY SECTION
    ========================================================================== */
@@ -3485,12 +3666,13 @@ scale: 2;
   overflow: hidden;
   background: #f5f5f5;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
   cursor: pointer;
+  will-change: transform;
 }
 
 .photo-zoom:hover {
-  transform: scale(1.02);
+  transform: translate3d(0, 0, 0) scale(1.02);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -3499,11 +3681,12 @@ scale: 2;
   width: 100%;
   height: 230px;
   object-fit: cover;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .photo-zoom:hover img {
-  transform: scale(1.05);
+  transform: translate3d(0, 0, 0) scale(1.05);
 }
 
 /* Custom Lightbox Modal */
