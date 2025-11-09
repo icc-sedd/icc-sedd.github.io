@@ -9,6 +9,11 @@ interface LoadingScreenProps {
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, total, isVisible }) => {
   const percentage = total > 0 ? Math.round((progress / total) * 100) : 0;
 
+  // Temporarily disabled - always return null
+  console.log('⚠️ LoadingScreen: Functionality temporarily disabled');
+  return null;
+
+  /* ORIGINAL CODE - TEMPORARILY DISABLED
   if (!isVisible) return null;
 
   return (
@@ -35,6 +40,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress, total, isVisibl
       </div>
     </div>
   );
+  */
 };
 
 export default LoadingScreen;

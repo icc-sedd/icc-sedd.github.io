@@ -15,6 +15,11 @@ const ImagePreloader: React.FC<ImagePreloaderProps> = ({
   const [loadedCount, setLoadedCount] = useState(0);
 
   useEffect(() => {
+    // Temporarily disabled - immediately call onAllImagesLoaded
+    console.log('⚠️ ImagePreloader: Functionality temporarily disabled');
+    onAllImagesLoaded();
+    
+    /* ORIGINAL CODE - TEMPORARILY DISABLED
     if (imageSrcs.length === 0) {
       onAllImagesLoaded();
       return;
@@ -45,6 +50,7 @@ const ImagePreloader: React.FC<ImagePreloaderProps> = ({
     };
 
     loadImages();
+    */
   }, [imageSrcs, onAllImagesLoaded, onProgressUpdate]);
 
   return null; // This component doesn't render anything

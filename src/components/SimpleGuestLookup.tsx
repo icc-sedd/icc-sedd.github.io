@@ -203,26 +203,26 @@ const SimpleGuestLookup: React.FC = () => {
       {/* Guest information display */}
       {guest && (
         <div className="guest-info" style={{
-          background: 'rgba(212, 175, 55, 0.08)',
-          border: '1px solid rgba(212, 175, 55, 0.2)',
-          borderRadius: '15px',
-          padding: '2rem',
-          margin: '2rem 0',
+          background: '#d4edda',
+          border: '1px solid #c3e6cb',
+          borderRadius: '10px',
+          padding: '1.5rem',
+          margin: '1rem 0',
           textAlign: 'center'
         }}>
-          <h3 style={{ color: '#4a3728', marginTop: 0, fontSize: '1.8rem', marginBottom: '1.5rem' }}>Welcome! 🎊</h3>
-          <div style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#4a3728' }}>
-            <p style={{ marginBottom: '1rem' }}>
-              <strong style={{ color: '#4a3728' }}>Guest Name:</strong> <span style={{ color: '#b8941f', fontSize: '1.15rem', fontWeight: '600' }}>{guest.name}</span>
+          <h3 style={{ color: '#155724', marginTop: 0 }}>🎊 Welcome!</h3>
+          <div style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+            <p style={{ marginBottom: '0.5rem' }}>
+              <strong>👤 Guest Name:</strong> <span style={{ color: '#155724' }}>{guest.name}</span>
             </p>
-            <p style={{ marginBottom: '1rem' }}>
-              <strong style={{ color: '#4a3728' }}>Adult Seats:</strong> <span style={{ color: '#b8941f', fontSize: '1.15rem', fontWeight: '600' }}>{guest.seats}</span>
+            <p style={{ marginBottom: '0.5rem' }}>
+              <strong>👨‍👩‍👧‍👦 Adult Seats:</strong> <span style={{ color: '#155724' }}>{guest.seats}</span>
             </p>
-            <p style={{ marginBottom: '1.5rem' }}>
-              <strong style={{ color: '#4a3728' }}>Children Seats:</strong> <span style={{ color: '#b8941f', fontSize: '1.15rem', fontWeight: '600' }}>{guest.kidsSeats}</span>
+            <p style={{ marginBottom: 20 }}>
+              <strong>👶 Children Seats:</strong> <span style={{ color: '#155724' }}>{guest.kidsSeats}</span>
             </p>
-            <p style={{ marginBottom: 0, fontSize: '0.95rem', color: '#8b4513', fontStyle: 'italic' }}>
-              Please refrain from exceeding the allotted seats
+            <p style={{ marginBottom: 0 }}>
+              <strong>⚠️</strong> <span style={{ color: '#c2270cff', fontFamily: 'monospace' }}>{'Please refrain from exceeding the alloted seats'}</span><strong>⚠️</strong>
             </p>
           </div>
         </div>

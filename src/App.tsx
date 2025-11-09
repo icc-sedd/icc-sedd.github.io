@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import About from './components/About';
+import Home from './components/Home';
+import Options from './components/Options';
 import Details from './components/Details';
 import Entourage from './components/Entourage';
-import WhatToWear from './components/WhatToWear';
+import WeddingAttire from './components/WeddingAttire';
 import Photos from './components/Photos';
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
@@ -37,6 +38,9 @@ function App() {
   ];
 
   useEffect(() => {
+    // Scroll to top on component mount
+    window.scrollTo(0, 0);
+    
     // Check for GuestID parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
     const guestId = urlParams.get('GuestID');
@@ -85,14 +89,9 @@ function App() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         fontSize: '1.2rem'
       }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ marginBottom: '1rem', fontSize: '2rem' }}>💝</div>
-          <p>Loading your invitation...</p>
-        </div>
       </div>
     );
   }
@@ -123,10 +122,11 @@ function App() {
       <div style={{ opacity: imagesLoaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
         <Navbar />
         <Header />
-        <About />
+        <Home />
+        <Options />
         <Entourage />
-        <Details />
-        <WhatToWear />
+        <WeddingAttire />
+        <Details />        
         <Photos />
         <Footer />
       </div>
