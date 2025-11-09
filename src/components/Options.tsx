@@ -7,6 +7,20 @@ import arrow from '../images/gold-arrow.png';
 
 
 const Options: React.FC = () => {
+  const handleEntourageClick = () => {
+    const entourageSection = document.getElementById('entourage');
+    if (entourageSection) {
+      entourageSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDetailsClick = () => {
+    const detailsSection = document.getElementById('details');
+    if (detailsSection) {
+      detailsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="options" className="section options-section">
       <div className="container options-container">
@@ -14,13 +28,13 @@ const Options: React.FC = () => {
             <img src={pair} alt="pair" className="flower-pair" />
             <img src={pair} alt="pair" className="flower-pair2" />
             <img src={pair} alt="pair" className="flower-pair3" />
-            <img src={goldFlower} alt="pair" className="gold-flower" />
-            <div className="wedding-entourage-card">                
+            <img src={goldFlower} alt="gold-flower" className="gold-flower" />
+            <div className="wedding-entourage-card" onClick={handleEntourageClick} style={{ cursor: 'pointer' }}>                
                <h3 className="entourage-title-wedding">Wedding</h3>
                <h3 className="entourage-title-entourage">Entourage</h3>
             </div>
             <img src={couple2} alt="couple2" className="couple2" />
-            <div className="wedding-details-card">
+            <div className="wedding-details-card" onClick={handleDetailsClick} style={{ cursor: 'pointer' }}>
                <h3 className="wedding-details-click">Click for the</h3>
                <h3 className="wedding-details-detail">Wedding Details</h3>
             </div>

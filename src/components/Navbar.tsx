@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
       }
       
       // Detect active section based on scroll position
-      const sections = ['home', 'options', 'entourage', 'details', 'what-to-wear', 'photos'];
+      const sections = ['home', 'options', 'entourage', 'what-to-wear', 'details', 'photos'];
       const sectionElements = sections.map(id => document.getElementById(id));
       
       let currentSection = 'home';
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
         if (element) {
           const rect = element.getBoundingClientRect();
           // Improved detection: section is active when its top is within viewport
-          if (rect.top <= 150) {
+          if (rect.top <= 200) {
             currentSection = sections[i];
             break;
           }
@@ -219,8 +219,8 @@ const Navbar: React.FC = () => {
           <li><a href="#home" onClick={handleNavClick} className={activeSection === 'home' ? 'active' : ''}>Home</a></li>
           <li><a href="#options" onClick={handleNavClick} className={activeSection === 'options' ? 'active' : ''}>Options</a></li>
           <li><a href="#entourage" onClick={handleNavClick} className={activeSection === 'entourage' ? 'active' : ''}>Entourage</a></li>
+          <li><a href="#what-to-wear" onClick={handleNavClick} className={activeSection === 'what-to-wear' ? 'active' : ''}>Wedding Attire</a></li>
           <li><a href="#details" onClick={handleNavClick} className={activeSection === 'details' ? 'active' : ''}>Wedding Details</a></li>
-          <li><a href="#what-to-wear" onClick={handleNavClick} className={activeSection === 'what-to-wear' ? 'active' : ''}>What to Wear</a></li>
           <li><a href="#photos" onClick={handleNavClick} className={activeSection === 'photos' ? 'active' : ''}>Photos</a></li>
         </ul>
         

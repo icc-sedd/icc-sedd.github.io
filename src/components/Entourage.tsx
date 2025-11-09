@@ -1,224 +1,167 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import glass from '../images/champagne-glass.png';
+import goldLeave1 from '../images/gold-leaves-1.png';
+import goldLeave2 from '../images/gold-leaves-2.png';
+import goldflower from '../images/gold-flower.png';
 
 const Entourage: React.FC = () => {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isAnimated, setIsAnimated] = useState(false);
-  const [backgroundOffset, setBackgroundOffset] = useState(0);
-
-  // Parallax scroll effect for background image
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5; // Adjust this value to control parallax speed
-        
-        // Only apply parallax when section is in viewport
-        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-          setBackgroundOffset(rate);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !isAnimated) {
-              // Add animation classes with staggered delays
-              const cards = entry.target.querySelectorAll('.entourage-group');
-              cards.forEach((card, index) => {
-                setTimeout(() => {
-                  card.classList.add('animate-slide-up');
-                }, index * 200); // 200ms delay between each card
-              });
-              setIsAnimated(true);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '0px 0px 0px 0px'
-        }
-      );
-
-      if (contentRef.current) {
-        observer.observe(contentRef.current);
-      }
-
-      return () => {
-        if (contentRef.current) {
-          observer.unobserve(contentRef.current);
-        }
-      };
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [isAnimated]);
-
   return (
-    <section 
-      id="entourage" 
-      className="section"
-      ref={sectionRef}
-      style={{
-        background: `url('/images/background-silk.png') center/cover`,
-        backgroundAttachment: 'scroll',
-        backgroundPosition: `center ${backgroundOffset}px`
-      }}
-    >
-      <div className="container entourage-content" ref={contentRef}>
-        <h2>Our Entourage</h2>
+    <section id="entourage" className="section entourage-section">   
+        <img src={glass} alt="champagne-glass" className="champagne-glass" />
+        <img src={goldLeave1} alt="gold-leaves-1" className="gold-leaves-1" />
+        <img src={goldLeave2} alt="gold-leaves-2" className="gold-leaves-2" />
+        <img src={goldflower} alt="gold-flower" className="gold-flower-half" />   
+      <div className='container entourage-container'>
+        <h1 className="entourage-main-title">ENTOURAGE</h1>        
+        {/* Parents Section */}
+        <div className="entourage-parents-wrapper">
+          <div className="entourage-parent-card">
+            <h3 className="entourage-parent-title">Parents of the Bride</h3>
+            <p className="entourage-guest-name">Mrs. Norma R. De Leon</p>
+            <p className="entourage-guest-name">The late Mr. Ramil De Leon</p>
+          </div>          
+          <div className="entourage-parent-card">
+            <h3 className="entourage-parent-title">Parents of the Groom</h3>
+            <p className="entourage-guest-name">Mrs. Jesusa Z. Ramos</p>
+            <p className="entourage-guest-name">The late Mr. Segundino Ramos Jr.</p>
+          </div>
+        </div>
         
-        <div className="entourage-group">
-          <h3>Principal Sponsors</h3>
-          <div className="principal-sponsors-card">
-            <div className="sponsors-list">
-              <div className="sponsor-pair">
-                <span>Mrs. Lourdes Fababier</span>
-                <span>Mr. Onofre Fababier</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Ms. Janette Rosario</span>
-                <span>Mr. Ernesto Macarubo</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Ms. Joje Fababier</span>
-                <span>Mr. Romeo Barles</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Aillen Ariola Caguiwa</span>
-                <span>Mr. Arnel Celis</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Ms. Marilou Dela Gracia</span>
-                <span>Mr. Wenzy Fababier</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Margie Bermas</span>
-                <span>Mr. Noel Bermas</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Rowena Pascua</span>
-                <span>Mr. Noel Pascua</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Beth Nicolas</span>
-                <span>Mr. Morris Perdon</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Penny Perido</span>
-                <span>Mr. Dennis Perido</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Grace Dizon</span>
-                <span>Mr. Jonas Cerdan</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Faye Marie Zapatero</span>
-                <span>Mr. Jeffrey Zapatero</span>
-              </div>
-              <div className="sponsor-pair">
-                <span>Mrs. Julibee Nicolas Tinamisan</span>
-                <span>Mr. Jesus Zapatero Jr.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="entourage-group">
-          <h3>Special Roles</h3>
-          <div className="special-roles-custom-layout">
-            <div className="role-row single">
-              <div className="role">
-                <h4>Ring Bearer</h4>
-                <p>Jio Aedrious R. Ramos</p>
-              </div>
-            </div>
-            <div className="role-row double">
-              <div className="role">
-                <h4>Bible Bearer</h4>
-                <p>Zachary Mikhael D. Gonzaga</p>
-              </div>
-              <div className="role">
-                <h4>Coin Bearer</h4>
-                <p>Juan Crisson Bautista</p>
-              </div>
-            </div>
-            <div className="role-row single">
-              <div className="role">
-                <h4>Flower Girls</h4>
-                <p>Leticia Ambrose C. Francia</p>
-                <p>Shazeah Kylie Sanchez</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="entourage-group">
-          <h3>Bridal Party</h3>
-          <div className="honor-party-card">
-            <div className="honor-party-content">
-              <div className="honor-section">
-                <h4>Matron of Honor</h4>
-                <p>
-                  <span className="person-name">Danica Rose C. Francia</span>
-                </p>
-              </div>
-              
-              <div className="honor-section">
-                <h4>Best Man</h4>
-                <p>
-                  <span className="person-name">Aljohn Ramos</span>
-                </p>
-              </div>
-
-              <div className="honor-section">
-                <h4>Maid of Honor</h4>
-                <p>
-                  <span className="person-name">Janine Fababier</span>
-                </p>
-              </div>
-              
-
-            </div>
-          </div>
+        {/* Principal Sponsors Section */}
+        <div className="entourage-sponsors-wrapper">
+          <h2 className="entourage-sponsors-title">Principal Sponsors</h2>
           
-          <div className="bridesmaids-groomsmen-card">
-            <div className="bridesmaids-groomsmen-content">
-              <div className="bridesmaids-section">
-                <h4>Bridesmaids</h4>
-                <ul>
-                  <li>Mikee Mae De Leon</li>
-                  <li>Faye Valle</li>
-                  <li>Monica Solas</li>
-                  <li>Rosemarie M. Cortado</li>
-                  <li>Prances Ann F. Roxas</li>
-                  <li>Nor-Anne Marie F. Fiel</li>
-                  <li>Joselle R. Ramos</li>
-                  <li>Janelle Z. Ramos</li>
-                </ul>
-              </div>
-              
-              <div className="groomsmen-section">
-                <h4>Groomsmen</h4>
-                <ul>
-                  <li>Bryan Roger P. Bernardo</li>
-                  <li>Gerald Rafael B. Francia</li>
-                  <li>Ritz Alonzo</li>
-                  <li>Carlo Tienzo</li>
-                  <li>Christian Kurt Agao</li>
-                  <li>Maverick Lewis K. Fiel</li>
-                  <li>Adrian Ramos</li>
-                  <li>Kyle Camua</li>
-                </ul>
-              </div>
+          <div className="entourage-sponsors-columns">
+            {/* Left Column */}
+            <div className="entourage-sponsors-column">
+              <p className="entourage-sponsors-name">Mr. Noly Pascua</p>
+              <p className="entourage-sponsors-name">Mr. Morris Perdon</p>
+              <p className="entourage-sponsors-name">Mr. Dennis Perido</p>
+              <p className="entourage-sponsors-name">Mr. Jonas Cerdan</p>
+              <p className="entourage-sponsors-name">Mr. Jeffrey Zapatero</p>
+              <p className="entourage-sponsors-name">Mr. Jesus Zapatero Jr.</p>
+              <p className="entourage-sponsors-name">Mr. Onofre Fababier</p>
+              <p className="entourage-sponsors-name">Mr. Ernesto Macarrubo</p>
+              <p className="entourage-sponsors-name">Mr. Romy Fababier</p>
+              <p className="entourage-sponsors-name">Mr. Arnel Celis</p>
+              <p className="entourage-sponsors-name">Mr. Renwil Fababier</p>
+              <p className="entourage-sponsors-name">Mr. Noel Bermas</p>
+            </div>
+            
+            {/* Right Column */}
+            <div className="entourage-sponsors-column">
+              <p className="entourage-sponsors-name">Mrs. Rowena Pascua</p>
+              <p className="entourage-sponsors-name">Mrs. Julita Nicolas</p>
+              <p className="entourage-sponsors-name">Mrs. Penny Perido</p>
+              <p className="entourage-sponsors-name">Mrs. Grace Dizon</p>
+              <p className="entourage-sponsors-name">Mrs. Faye Marie Zapatero</p>
+              <p className="entourage-sponsors-name">Mrs. Juliebee Tinamisan</p>
+              <p className="entourage-sponsors-name">Mrs. Lourdes Fababier</p>
+              <p className="entourage-sponsors-name">Ms. Janette Rosario</p>
+              <p className="entourage-sponsors-name">Ms. Joje Fababier</p>
+              <p className="entourage-sponsors-name">Mrs. Aillen Ariola Caguiwa</p>
+              <p className="entourage-sponsors-name">Ms. Marilou Dela Gracia</p>
+              <p className="entourage-sponsors-name">Mrs. Margie Bermas</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Wedding Party Section */}
+        <div className="entourage-wedding-party-wrapper">
+          {/* Top Row - Honor Attendants */}
+          <div className="entourage-party-row">
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-title">Maid of Honor</h3>
+              <p className="entourage-party-name">Janine Fababier</p>
+            </div>
+            
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-title">Best Man</h3>
+              <p className="entourage-party-name">Aljohn Ramos</p>
+            </div>
+            
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-title">Matron of Honor</h3>
+              <p className="entourage-party-name">Danica Rose Francia</p>
+            </div>
+          </div>
+
+          {/* Second Row - To Bind Us Together & To Clothe Us As One */}
+          <div className="entourage-party-row">
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-subtitle">To bind us together</h3>
+              <p className="entourage-party-name">Bryan Roger Bernardo</p>
+              <p className="entourage-party-name">Janine Fababier</p>
+            </div>
+            
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-subtitle">To light our path</h3>
+              <p className="entourage-party-name">Maverick Lewis Fiel</p>
+              <p className="entourage-party-name">Nor-Anne Fiel</p>
+            </div>
+            
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-subtitle">To cloth us as one</h3>
+              <p className="entourage-party-name">John Adrian Ramos</p>
+              <p className="entourage-party-name">Joselle Ann Ramos</p>
+            </div>
+          </div>
+
+          {/* Third Row - Groomsmen & Bridesmaids */}
+          <div className="entourage-party-row">
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-label">Groomsmen</h3>
+              <p className="entourage-party-name">Bryan Roger Bernardo</p>
+              <p className="entourage-party-name">Gerald Rafael Francia</p>
+              <p className="entourage-party-name">Ritz Oville Alonzo</p>
+              <p className="entourage-party-name">Carlo Tienzo</p>
+              <p className="entourage-party-name">Christian Kurt Agao</p>
+              <p className="entourage-party-name">Maverick Lewis Fiel</p>
+              <p className="entourage-party-name">John Adrian Ramos</p>
+              <p className="entourage-party-name">Kyle Nathaniel Camua</p>
+            </div>
+            
+            <div className="entourage-party-section">
+              <h3 className="entourage-party-label">Bridesmaids</h3>
+              <p className="entourage-party-name">Mikee Mae De Leon</p>
+              <p className="entourage-party-name">Faye Valle</p>
+              <p className="entourage-party-name">Monica Solas</p>
+              <p className="entourage-party-name">Rosemarie Cortado</p>
+              <p className="entourage-party-name">Prances Ann Roxas</p>
+              <p className="entourage-party-name">Nor-Anne Marie Fiel</p>
+              <p className="entourage-party-name">Joselle Ann Ramos</p>
+              <p className="entourage-party-name">Janelle Ramos</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Special Roles Section */}
+        <div className="entourage-special-roles-wrapper">
+          {/* Top Row - Coin Bearer, Ring Bearer, Bible Bearer */}
+          <div className="entourage-special-roles-row">
+            <div className="entourage-special-role-section">
+              <h3 className="entourage-special-role-title">Coin Bearer</h3>
+              <p className="entourage-special-role-name">Juan Crisson Bautista</p>
+            </div>
+            
+            <div className="entourage-special-role-section">
+              <h3 className="entourage-special-role-title">Ring Bearer</h3>
+              <p className="entourage-special-role-name">Jio Aedrious Ramos</p>
+            </div>
+            
+            <div className="entourage-special-role-section">
+              <h3 className="entourage-special-role-title">Bible Bearer</h3>
+              <p className="entourage-special-role-name">Zachary Mikhael Gonzaga</p>
+            </div>
+          </div>
+
+          {/* Bottom Row - Flower Girls */}
+          <div className="entourage-special-roles-row-bottom">
+            <div className="entourage-special-role-section">
+              <h3 className="entourage-special-role-subtitle">Flower Girls</h3>
+              <p className="entourage-special-role-name">Alexandra Margarette Ramos</p>
+              <p className="entourage-special-role-name">Leticia Ambrose Francia</p>
+              <p className="entourage-special-role-name">Shazeah Kylie Sanchez</p>
             </div>
           </div>
         </div>

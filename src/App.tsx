@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Options from './components/Options';
 import Details from './components/Details';
 import Entourage from './components/Entourage';
-import WhatToWear from './components/WhatToWear';
+import WeddingAttire from './components/WeddingAttire';
 import Photos from './components/Photos';
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
@@ -125,8 +125,8 @@ function App() {
         <Home />
         <Options />
         <Entourage />
-        <Details />
-        <WhatToWear />
+        <WeddingAttire />
+        <Details />        
         <Photos />
         <Footer />
       </div>

@@ -1,38 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React from 'react';
 
-// Interface for photo objects
-interface Photo {
-  id: number;
-  src: string;
-  alt: string;
-}
-
-// Dynamic image loading function
-const loadGalleryImages = async (): Promise<Photo[]> => {
-  console.log('🔍 Starting to load gallery images...');
-
-  try {
-    // Try to fetch a gallery manifest file first (if it exists)
-    console.log('📋 Attempting to fetch manifest.json...');
-    const response = await fetch(`${process.env.PUBLIC_URL || ''}/gallery/manifest.json`);
-    if (response.ok) {
-      const manifest = await response.json();
-      console.log('✅ Manifest loaded successfully:', manifest);
-      const manifestImages = manifest.images.map((filename: string, index: number) => ({
-        id: index + 1,
-        src: `${process.env.PUBLIC_URL || ''}/gallery/${filename}`,
-        alt: `Wedding Photo ${index + 1}`
-      }));
-      console.log('📸 Images from manifest:', manifestImages);
-      return manifestImages;
-    }
-  } catch (error) {
-    console.log('⚠️ No manifest.json found, using predefined image list...', error);
-  }
-
-  // Updated list of all images in the gallery folder
-  const galleryImageFilenames = [
+const Photos: React.FC = () => {
+  // Gallery images from the src/images/gallery folder
+  const galleryImages = [
     'MAT05252.jpg',
     'MAT05257.jpg',
     'MAT05343.jpg',
@@ -52,303 +22,35 @@ const loadGalleryImages = async (): Promise<Photo[]> => {
     'MAT06244.jpg'
   ];
 
-  // Use the predefined list of gallery images
-  const galleryImages = galleryImageFilenames.map((filename, index) => ({
-    id: index + 1,
-    src: `${process.env.PUBLIC_URL || ''}/gallery/${filename}`,
-    alt: `Wedding Photo ${index + 1}`
-  }));
-
-  console.log(`📂 Loaded ${galleryImages.length} images from predefined list:`, galleryImages);
-  return galleryImages;
-};
-
-// Lightbox Component
-const Lightbox: React.FC<{
-  images: Photo[];
-  currentIndex: number;
-  isOpen: boolean;
-  onClose: () => void;
-  onNext: () => void;
-  onPrev: () => void;
-}> = ({ images, currentIndex, isOpen, onClose, onNext, onPrev }) => {
-  
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
-      
-      switch (e.key) {
-        case 'Escape':
-          onClose();
-          break;
-        case 'ArrowLeft':
-          onPrev();
-          break;
-        case 'ArrowRight':
-          onNext();
-          break;
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose, onNext, onPrev]);
-
-  if (!isOpen) return null;
-
-  return createPortal(
-    <div className="lightbox-overlay" onClick={onClose}>
-      <div className="lightbox-container">
-        <button 
-          className="lightbox-close" 
-          onClick={(e) => {
-            e.stopPropagation();
-            onClose();
-          }} 
-          aria-label="Close"
-        >
-          ×
-        </button>
-        
-        <button 
-          className="lightbox-prev" 
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }} 
-          aria-label="Previous"
-        >
-          ‹
-        </button>
-        
-        <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-          <img
-            src={images[currentIndex]?.src}
-            alt={images[currentIndex]?.alt}
-            className="lightbox-image"
-          />
-          <div className="lightbox-counter">
-            {currentIndex + 1} / {images.length}
-          </div>
-        </div>
-        
-        <button 
-          className="lightbox-next" 
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }} 
-          aria-label="Next"
-        >
-          ›
-        </button>
-      </div>
-    </div>,
-    document.body
-  );
-};
-
-// Individual Gallery Item Component
-const GalleryItem: React.FC<{
-  photo: Photo;
-  onClick: () => void;
-}> = ({ photo, onClick }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-    console.log(`✅ Image loaded successfully: ${photo.src}`);
-  };
-
-  const handleImageError = () => {
-    setImageError(true);
-    console.error(`❌ Failed to load image: ${photo.src}`);
-  };
-
-  return (
-    <div className="gallery-item" onClick={onClick}>
-      <div className="gallery-item-inner">
-        {!imageLoaded && !imageError && (
-          <div className="gallery-loading">
-            <div className="loading-spinner"></div>
-          </div>
-        )}
-        {imageError && (
-          <div className="gallery-error">
-            <span>❌</span>
-            <p>Failed to load image</p>
-          </div>
-        )}
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          loading="lazy"
-          className="gallery-image"
-          onLoad={handleImageLoad}
-          onError={handleImageError}
-          style={{ 
-            opacity: imageLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease'
-          }}
-        />
-        <div className="gallery-overlay">
-          <div className="gallery-overlay-content">
-            <span className="gallery-icon">🔍</span>
-            <span className="gallery-text">View Photo</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Photos: React.FC = () => {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [isAnimated, setIsAnimated] = useState(false);
-  const [photos, setPhotos] = useState<Photo[]>([]);
-  const [isLoadingPhotos, setIsLoadingPhotos] = useState(true);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Load photos on component mount
-  useEffect(() => {
-    const loadPhotos = async () => {
-      setIsLoadingPhotos(true);
-      try {
-        // First, let's test if we can load just one image as a test
-        const testImage = new Image();
-        testImage.onload = () => console.log('✅ Test image loaded successfully');
-        testImage.onerror = () => console.error('❌ Test image failed to load');
-        testImage.src = `${process.env.PUBLIC_URL || ''}/gallery/MAT05252.jpg`;
-        
-        const galleryImages = await loadGalleryImages();
-        setPhotos(galleryImages);
-        console.log(`📊 Final photos state:`, galleryImages);
-      } catch (error) {
-        console.error('💥 Failed to load gallery images:', error);
-        setPhotos([]);
-      }
-      setIsLoadingPhotos(false);
-    };
-
-    loadPhotos();
-  }, []);
-
-  // Intersection Observer for animations
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !isAnimated) {
-              const container = entry.target as HTMLElement;
-              const galleryItems = container.querySelectorAll('.gallery-item');
-              
-              container.classList.add('animate-slide-up');
-              
-              // Staggered animation for gallery items
-              galleryItems.forEach((item, index) => {
-                setTimeout(() => {
-                  item.classList.add('animate-slide-up');
-                }, index * 50);
-              });
-              
-              setIsAnimated(true);
-              observer.disconnect();
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-
-      if (contentRef.current) {
-        observer.observe(contentRef.current);
-      }
-
-      return () => observer.disconnect();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [isAnimated]);
-
-  // Lightbox handlers
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-    document.body.style.overflow = 'unset';
-  };
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % photos.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
-  };
-
-  // Loading state
-  if (isLoadingPhotos) {
-    return (
-      <section id="photos" className="section">
-        <div className="container">
-          <div className="gallery-header">
-            <h2>Our Memories</h2>
-            <p>Loading our beautiful moments...</p>
-          </div>
-          <div className="gallery-loading">
-            <div className="loading-spinner"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // No photos state
-  if (photos.length === 0) {
-    return (
-      <section id="photos" className="section">
-        <div className="container">
-          <div className="gallery-header">
-            <h2>Our Memories</h2>
-            <p>No photos found. Please add images to the gallery folder.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="photos" className="section">
-      <div className="container" ref={contentRef}>
-        <div className="gallery-header">
-          <h2>Our Memories</h2>
-          <p>A glimpse into our beautiful journey together</p>
-        </div>
+      <div className="container photos-container">
+        <h1 className="attire-main-title">OUR MEMORIES</h1>
         
-        <div className="gallery-grid">
-          {photos.map((photo, index) => (
-            <GalleryItem
-              key={photo.id}
-              photo={photo}
-              onClick={() => openLightbox(index)}
-            />
-          ))}
+        <div className="gallery-container">
+          <div className="gallery-row">
+            {galleryImages.map((image, index) => {
+              let colClass = 'col-sm-6';
+              if (index % 3 === 2) {
+                colClass = 'col-sm-4';
+              } else if (index % 2 === 0) {
+                colClass = 'col-sm-6';
+              }
+
+              return (
+                <div key={index} className={`gallery-col ${colClass}`}>
+                  <div className="photo-zoom">
+                    <img 
+                      src={require(`../images/gallery/${image}`)} 
+                      alt={`Gallery photo ${index + 1}`}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        
-        <Lightbox
-          images={photos}
-          currentIndex={currentImageIndex}
-          isOpen={lightboxOpen}
-          onClose={closeLightbox}
-          onNext={nextImage}
-          onPrev={prevImage}
-        />
       </div>
     </section>
   );
