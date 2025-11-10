@@ -2438,7 +2438,7 @@ section#rsvp.section {
   }
 
   .bridegroom-divider-image {
-    display: none;
+    display: block;
   }
 
   .invitation-cards-wrapper {
@@ -2449,21 +2449,58 @@ section#rsvp.section {
 
   .flower-left,
   .flower-right {
-    width: 50px;
+    width: 30px !important;
     display: block;
   }
 
   .flower-left {
-    left: 20px;
-    margin-top: 50px;
-    animation: flowerFadeIn 2s ease-out 2s both, gentleSwayLeft 4s ease-in-out 2.5s infinite;
+    left: 20% !important;
+    margin-top: 50px!important;
+    animation: flowerFadeIn 2s ease-out 2s both, gentleSwayLeft768 4s ease-in-out 2.5s infinite;
   }
 
   .flower-right {
-    width: 50px;
-    right: 10px;
-    margin-bottom: 50px;
-    animation: flowerFadeIn 2s ease-out 2s both, gentleSwayRight 4s ease-in-out 2.5s infinite;
+    right: 20% !important;
+    margin-bottom: 50px!important;
+    animation: flowerFadeIn 2s ease-out 2s both, gentleSwayRight768 4s ease-in-out 2.5s infinite;
+  }
+
+  @keyframes gentleSwayLeft768 {
+    0%,
+    100% {
+      transform: scale(1.5) rotate(0deg) translateY(0);
+    }
+
+    25% {
+      transform: scale(1.5) rotate(-2deg) translateY(-5px);
+    }
+
+    50% {
+      transform: scale(1.5) rotate(0deg) translateY(0);
+    }
+
+    75% {
+      transform: scale(1.5) rotate(2deg) translateY(5px);
+    }
+  }
+
+  @keyframes gentleSwayRight768 {
+    0%,
+    100% {
+      transform: scale(1.5) rotate(0deg) translateY(0);
+    }
+
+    25% {
+      transform: scale(1.5) rotate(2deg) translateY(5px);
+    }
+
+    50% {
+      transform: scale(1.5) rotate(0deg) translateY(0);
+    }
+
+    75% {
+      transform: scale(1.5) rotate(-2deg) translateY(-5px);
+    }
   }
 
   .flower-row-decoration {
@@ -3932,7 +3969,7 @@ section#rsvp.section {
   }
 
   .details-label {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 
   .venue-name {
