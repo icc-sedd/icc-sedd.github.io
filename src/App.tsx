@@ -6,6 +6,7 @@ import Options from './components/Options';
 import Details from './components/Details';
 import Entourage from './components/Entourage';
 import WeddingAttire from './components/WeddingAttire';
+import GiftGuide from './components/GiftGuide';
 import Photos from './components/Photos';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
@@ -129,6 +130,7 @@ function App() {
         <Entourage />
         <Details />
         <WeddingAttire />
+        <GiftGuide />
         <RSVP />
         <Photos />
         <Footer />
