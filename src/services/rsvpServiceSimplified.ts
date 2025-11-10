@@ -4,6 +4,7 @@ export interface RSVPResponse {
   guestName: string;
   attendeeNames: string[]; // Array of attendee names (one for each seat)
   timestamp?: string;
+  attending?: string; // "Yes" or "No"
 }
 
 class RSVPServiceSimplified {
@@ -31,6 +32,7 @@ class RSVPServiceSimplified {
         guestId: response.guestId,
         guestName: response.guestName,
         attendeeNames: attendeeNamesStr,
+        attending: response.attending || 'Yes',
         timestamp: timestamp
       };
 
@@ -39,6 +41,7 @@ class RSVPServiceSimplified {
         guestId: response.guestId,
         guestName: response.guestName,
         attendeeNames: response.attendeeNames,
+        attending: response.attending || 'Yes',
         timestamp: timestamp
       }));
 

@@ -2015,9 +2015,10 @@ section#rsvp.section {
   background: url('./images/background-silk.png') center/cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  padding: 6rem 2rem 4rem;
+  min-height: auto;
+  padding: 2rem 2rem 4rem;
   position: relative;
+  scroll-margin-top: 120px;
 }
 
 /* Navbar Component Styles */
@@ -3915,20 +3916,20 @@ scale: 2;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  padding: 3rem 2rem;
-  max-width: 500px;
-  margin: 2rem auto;
+  padding: 1rem 0.8rem;
+  max-width: 350px;
+  margin: 0.5rem auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(184, 134, 11, 0.3);
 }
 
 .rsvp-guest-info h2 {
   font-family: 'TAN Angleton', 'Lora', serif;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #b8860b;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
@@ -3936,18 +3937,18 @@ scale: 2;
 .seat-allocation {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.5rem;
 }
 
 .seat-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 0.75rem;
   background: rgba(184, 134, 11, 0.1);
   border-left: 4px solid #b8860b;
   border-radius: 4px;
-  font-size: 1.1rem;
+  font-size: 0.85rem;
 }
 
 .seat-item.total {
@@ -3964,24 +3965,49 @@ scale: 2;
 
 .seat-count {
   font-family: 'Lora', serif;
-  font-size: 2.8rem;
+  font-size: 1.3rem;
   color: #b8860b;
   font-weight: bold;
 }
 
 .rsvp-submit-btn {
   width: 100%;
-  margin-top: 2rem;
-  padding: 1rem 2rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.5rem;
   background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Lora', serif;
+}
+
+.rsvp-decline-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #dc3545 0%, #e57373 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lora', serif;
+}
+
+.rsvp-decline-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+}
+
+.rsvp-decline-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .rsvp-submit-btn:hover:not(:disabled) {
@@ -4036,29 +4062,32 @@ scale: 2;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: 2rem;
+  padding: 1rem;
   animation: fadeIn 0.3s ease;
+  overflow-y: auto;
 }
 
 .rsvp-form-container {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  padding: 3rem;
-  max-width: 600px;
+  padding: 1.5rem;
+  max-width: 450px;
   width: 100%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   border: 2px solid rgba(184, 134, 11, 0.3);
   animation: slideIn 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .rsvp-form-container h2 {
   font-family: 'TAN Angleton', 'Lora', serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #b8860b;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
@@ -4066,45 +4095,45 @@ scale: 2;
 .form-subtitle {
   text-align: center;
   color: #4a3728;
-  font-size: 1rem;
-  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
   font-style: italic;
 }
 
 .form-section {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .form-label {
   display: block;
   font-family: 'Lora', serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #b8860b;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
 }
 
 .form-hint {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #666;
-  margin-top: -0.3rem;
-  margin-bottom: 1rem;
+  margin-top: -0.2rem;
+  margin-bottom: 0.6rem;
   font-style: italic;
 }
 
 .form-field,
 .form-field-static {
   width: 100%;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
   border: 1px solid rgba(184, 134, 11, 0.3);
   border-radius: 6px;
   font-family: 'Lora', serif;
   color: #4a3728;
   background: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   transition: all 0.3s ease;
 }
 
@@ -4133,16 +4162,16 @@ scale: 2;
 
 .form-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
   justify-content: center;
 }
 
 .btn-cancel,
 .btn-submit {
   flex: 1;
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
   font-weight: 600;
   border: none;
   border-radius: 8px;

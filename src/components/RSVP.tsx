@@ -25,11 +25,27 @@ const RSVP: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Prevent body scroll when form modal is open
+    if (showForm) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showForm]);
+
   const lookupGuestById = async (id: string) => {
     setIsLoading(true);
     setError(null);
     setGuest(null);
     setExistingRSVP(null);
+    
+    // Clear any cached session data for this guest to get fresh data
+    sessionStorage.removeItem(`rsvp_${id}`);
 
     try {
       const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
@@ -53,7 +69,7 @@ const RSVP: React.FC = () => {
         await rsvpService.initialize();
         const existingResponse = await rsvpService.checkExistingResponse('RSVP Response', id);
 
-        if (existingResponse) {
+        if (existingResponse && existingResponse.attendeeNames && existingResponse.attendeeNames.length > 0) {
           setExistingRSVP(existingResponse);
           // Pre-fill the form with existing attendee names
           setAttendeeNames(existingResponse.attendeeNames);
@@ -100,7 +116,8 @@ const RSVP: React.FC = () => {
       const response: RSVPResponse = {
         guestId: guestId || '',
         guestName: guest?.name || '',
-        attendeeNames: attendeeNames
+        attendeeNames: attendeeNames,
+        attending: 'Yes' // Set attending to Yes when submitting form
       };
 
       let success = false;
@@ -127,6 +144,58 @@ const RSVP: React.FC = () => {
     } catch (err) {
       console.error('RSVP submission error:', err);
       setError('Error submitting RSVP. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDeclineRSVP = async () => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
+      const apiKey = process.env.REACT_APP_GOOGLE_API_KEY || '';
+      const endpoint = process.env.REACT_APP_RSVP_ENDPOINT || '';
+
+      if (!sheetId || !apiKey) {
+        throw new Error('Google Sheet ID or API Key configuration missing');
+      }
+
+      const rsvpService = new RSVPServiceSimplified(sheetId, apiKey, endpoint);
+      await rsvpService.initialize();
+
+      // Create a decline response with empty attendee names and Attending = No
+      const declineResponse: RSVPResponse = {
+        guestId: guestId || '',
+        guestName: guest?.name || '',
+        attendeeNames: [], // Empty array for decline
+        attending: 'No' // Set attending to No
+      };
+
+      let success = false;
+
+      if (existingRSVP && isUpdating) {
+        // Update existing RSVP to decline
+        success = await rsvpService.updateRSVPResponse('RSVP Response', declineResponse, 0);
+        console.log('✏️ RSVP Declined (Updated) for guest:', guestId);
+      } else {
+        // Submit new decline RSVP
+        success = await rsvpService.submitRSVPResponse('RSVP Response', declineResponse);
+        console.log('❌ RSVP Declined (New) for guest:', guestId);
+      }
+
+      if (success) {
+        setSubmitSuccess(true);
+        setExistingRSVP(declineResponse);
+        setIsUpdating(false);
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        setError('Failed to submit decline response');
+      }
+    } catch (err) {
+      console.error('RSVP decline error:', err);
+      setError('Error submitting decline response. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -192,7 +261,15 @@ const RSVP: React.FC = () => {
               }}
               disabled={isSubmitting}
             >
-              {existingRSVP ? 'Update RSVP' : 'Fill RSVP Form'}
+              {existingRSVP ? 'Update RSVP' : 'Yes, Count Me In'}
+            </button>
+
+            <button
+              className="rsvp-decline-btn"
+              onClick={handleDeclineRSVP}
+              disabled={isSubmitting}
+            >
+              Sorry, I cannot make it
             </button>
           </div>
         )}
