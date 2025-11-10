@@ -72,9 +72,21 @@ const WeddingAttire: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Message and Guests Section */}
+        <div className="attire-message-guests-wrapper">
+          <div className="attire-message">
+            <p>Dear Guests,</p>
+            <p>We're so excited to celebrate our special day with you! To help you plan your outfit and feel comfortable, we kindly ask that you follow our dress code:</p>
+            <p>The ceremony requires the guests to wear a semi-formal attire so please dress accordingly.</p>
+            <p>Feel free to incorporate and wear your best outfit with a touch of our wedding colors!</p>
+            <p>We can't wait to see you all looking your best!</p>
+            <p>With love,<br />Sedd & Mara</p>
+          </div>
 
           {/* Guests Section */}
-          <div className="attire-section">
+          <div className="attire-section guests-section">
             <h2 className="attire-section-title">Guests</h2>
             <div className="attire-card">
               <div className="attire-image-container">

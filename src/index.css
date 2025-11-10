@@ -883,6 +883,14 @@ body {
   background-repeat: no-repeat;
   position: relative;
   overflow: visible;
+  z-index: 1;
+}
+
+.home-anchor {
+  position: absolute;
+  top: -80px;
+  width: 1px;
+  height: 1px;
 }
 
 .flower-pair {
@@ -953,18 +961,38 @@ body {
   animation: floatDecoration 3s ease-in-out infinite;
 }
 
+.bridegroom-divider-image {
+  display: block;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: -3rem;
+  height: 250px;
+  object-fit: cover;
+  object-position: center 20%;
+  padding-bottom: 5%;
+}
+
 .home-content {
   max-width: 1400px;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   z-index: 1;
   animation: fadeInUp 1s ease-out;
+}
+
+.invitation-cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .invitation-card {
@@ -1224,14 +1252,14 @@ body {
 
 .entourage-title-wedding {
   font-family: 'Moontime', cursive;
-  font-size: 4rem;
+  font-size: 2.5rem;
   color: #b8860b;
   font-weight: 400;
 }
 
 .entourage-title-entourage {
   font-family: "TAN Angleton", "Lora", serif;
-  font-size: 2.6rem;
+  font-size: 1.8rem;
   font-weight: 100;
   color: #b8860b;
   letter-spacing: 0.1rem;
@@ -1247,8 +1275,8 @@ body {
   border-radius: 50%;
   box-shadow: 12px 12px 0 #b8860b;
   border: none;
-  width: 350px;
-  height: 350px;
+  width: 280px;
+  height: 280px;
   transform: scale(0.95);
   text-align: center;
   display: flex;
@@ -1284,13 +1312,13 @@ body {
 
 .wedding-details-click {
   font-family: 'Moontime', cursive;
-  font-size: 4rem;
+  font-size: 2.5rem;
   color: #b8860b;
   font-weight: 400;
 }
 
 .couple2 {
-  max-width: 200px;
+  max-width: 150px;
   rotate: calc(20deg);
   animation: floatMinimal 3.5s ease-in-out infinite;
   transition: all 0.3s ease;
@@ -1303,7 +1331,7 @@ body {
 }
 
 .couple1 {
-  max-width: 500px;
+  max-width: 300px;
   rotate: calc(-10deg);
   animation: floatMinimal 3s ease-in-out infinite;
   transition: all 0.3s ease;
@@ -3207,6 +3235,50 @@ section#rsvp.section {
   text-transform: uppercase;
 }
 
+.attire-subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: #4b433dbe;
+  margin-bottom: 2rem;
+  font-family: 'Lora', serif;
+}
+
+.attire-message {
+  margin-top: 3rem;
+  padding: 2rem;
+  text-align: justify;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4a3728;
+  flex: 1;
+}
+
+.attire-message p {
+  margin-bottom: 1rem;
+}
+
+.attire-message-guests-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.guests-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.attire-section {
+  text-align: justify;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
 .attire-section {
   display: flex;
   flex-direction: column;
@@ -3231,6 +3303,75 @@ section#rsvp.section {
   margin-bottom: 1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   GIFT GUIDE SECTION
+   ========================================================================== */
+
+.gift-guide-section {
+  padding: 2rem;
+  background: url('./images/background-silk.png') center/cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-guide-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gift-guide-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-guide-image {
+  flex-shrink: 0;
+}
+
+.gold-bow-icon {
+  max-width: 100px;
+  height: auto;
+}
+
+.gift-guide-content {
+  flex: 1;
+  max-width: 400px;
+}
+
+.gift-guide-title {
+  font-family: 'TAN Angleton', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: #4a3728;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.gift-guide-message {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4a3728;
+  text-align: justify;
+}
+
+.gift-guide-message p {
+  margin-bottom: 1rem;
+}
+
+.gift-guide-highlight {
+  font-weight: 600;
+  color: #b8860b;
 }
 
 .attire-card {
@@ -3848,7 +3989,7 @@ scale: 2;
 }
 
 .rsvp-card {
-  width: 300px;
+  width: 250px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 5px;
@@ -3873,11 +4014,11 @@ scale: 2;
 
 .rsvp-text {
   font-family: 'Moontime', cursive;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #b8860b;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
   line-height: 1.2;
 }
 
@@ -3933,6 +4074,8 @@ scale: 2;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
+
+
 
 .seat-allocation {
   display: flex;

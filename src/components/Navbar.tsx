@@ -33,9 +33,42 @@ const Navbar: React.FC = () => {
         const navbar = document.querySelector('.navbar') as HTMLElement;
         const navbarHeight = navbar ? navbar.offsetHeight + 30 : 100; // Add 30px extra buffer
         
-        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-        // Use calculated navbar height as offset
-        const offsetPosition = elementPosition - navbarHeight;
+        let offsetPosition;
+        
+        // Special logic for home section - scroll to show invitation cards
+        if (sectionId === 'home') {
+          const homeContent = document.querySelector('.invitation-cards-wrapper') as HTMLElement;
+          if (homeContent) {
+            const homeContentPosition = homeContent.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = homeContentPosition - navbarHeight - 50; // Extra buffer to center cards
+          } else {
+            const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = elementPosition - navbarHeight;
+          }
+        } else if (sectionId === 'what-to-wear') {
+          // Special logic for wedding attire section - scroll to show title and content
+          const attireTitle = section.querySelector('h1') as HTMLElement;
+          if (attireTitle) {
+            const attireTitlePosition = attireTitle.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = attireTitlePosition - navbarHeight - 50; // Extra buffer
+          } else {
+            const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = elementPosition - navbarHeight;
+          }
+        } else if (sectionId === 'photos') {
+          // Special logic for photos section - scroll to show title
+          const photosTitle = section.querySelector('h1') as HTMLElement;
+          if (photosTitle) {
+            const photosTitlePosition = photosTitle.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = photosTitlePosition - navbarHeight - 50; // Extra buffer
+          } else {
+            const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            offsetPosition = elementPosition - navbarHeight;
+          }
+        } else {
+          const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+          offsetPosition = elementPosition - navbarHeight;
+        }
         
         window.scrollTo({
           top: offsetPosition,
