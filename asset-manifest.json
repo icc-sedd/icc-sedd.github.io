@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.209ba6b1.css",
-    "main.js": "/static/js/main.ca04222f.js",
+    "main.js": "/static/js/main.1c3a0244.js",
     "static/media/MAT06172.jpg": "/static/media/MAT06172.c309108db16a3396b5c5.jpg",
     "static/media/MAT05343.jpg": "/static/media/MAT05343.a657c172662cc059b856.jpg",
     "static/media/MAT05979.jpg": "/static/media/MAT05979.eae6249d13807c6a3227.jpg",
@@ -44,10 +44,10 @@
     "static/media/leaves-minimalist-gold.png": "/static/media/leaves-minimalist-gold.92d92ed8a9132fa316e1.png",
     "index.html": "/index.html",
     "main.209ba6b1.css.map": "/static/css/main.209ba6b1.css.map",
-    "main.ca04222f.js.map": "/static/js/main.ca04222f.js.map"
+    "main.1c3a0244.js.map": "/static/js/main.1c3a0244.js.map"
   },
   "entrypoints": [
     "static/css/main.209ba6b1.css",
-    "static/js/main.ca04222f.js"
+    "static/js/main.1c3a0244.js"
   ]
 }
