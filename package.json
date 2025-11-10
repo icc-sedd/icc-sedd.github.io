@@ -10,7 +10,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-gallery": "node generate-gallery-manifest.js",
-    "set-homepage": "npm pkg set homepage=https://icc-sedd.github.io/MaraAndSedd",
+    "set-homepage": "npm pkg set homepage=https://icc-sedd.github.io",
     "remove-homepage": "npm pkg delete homepage",
     "predeploy": "npm run build:gh-pages",
     "deploy": "gh-pages -d build"
@@ -47,5 +47,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  }
+  },
+  "homepage": "https://icc-sedd.github.io"
 }
