@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f63fd8e3.css",
-    "main.js": "/static/js/main.dc433261.js",
+    "main.css": "/static/css/main.8d1bdf2d.css",
+    "main.js": "/static/js/main.1b6fd231.js",
     "static/media/MAT06172.jpg": "/static/media/MAT06172.c309108db16a3396b5c5.jpg",
     "static/media/MAT05343.jpg": "/static/media/MAT05343.a657c172662cc059b856.jpg",
     "static/media/MAT05979.jpg": "/static/media/MAT05979.eae6249d13807c6a3227.jpg",
@@ -43,11 +43,11 @@
     "static/media/heart-drawing.png": "/static/media/heart-drawing.b3d4134cf55139f6121a.png",
     "static/media/leaves-minimalist-gold.png": "/static/media/leaves-minimalist-gold.92d92ed8a9132fa316e1.png",
     "index.html": "/index.html",
-    "main.f63fd8e3.css.map": "/static/css/main.f63fd8e3.css.map",
-    "main.dc433261.js.map": "/static/js/main.dc433261.js.map"
+    "main.8d1bdf2d.css.map": "/static/css/main.8d1bdf2d.css.map",
+    "main.1b6fd231.js.map": "/static/js/main.1b6fd231.js.map"
   },
   "entrypoints": [
-    "static/css/main.f63fd8e3.css",
-    "static/js/main.dc433261.js"
+    "static/css/main.8d1bdf2d.css",
+    "static/js/main.1b6fd231.js"
   ]
 }
