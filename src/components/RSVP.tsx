@@ -205,7 +205,11 @@ const RSVP: React.FC = () => {
     <section id="rsvp" className="section">
       <div className="container rsvp-container">
         <h1 className="attire-main-title">RSVP</h1>
-
+        <p className="attire-subtitle">
+          We have chosen to celebrate our wedding with a small and intimate ceremony,<br />
+          surrounded only by our closest family and friends. The favor of your reply is requested.<br />
+          Please confirm your attendance to help us finalize the arrangements for our intimate celebration.
+        </p>
         {isLoading && (
           <div className="rsvp-message loading">
             <p>Loading your seat allocation...</p>
