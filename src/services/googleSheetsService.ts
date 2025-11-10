@@ -91,7 +91,7 @@ class GoogleSheetsService {
 
   async getGuestReservations(
     spreadsheetId: string, 
-    range: string = 'Sheet1!A:D'
+    range: string = 'Guests!A:D'
   ): Promise<GuestReservation[]> {
     try {
       if (!this.isInitialized) {
@@ -138,7 +138,7 @@ class GoogleSheetsService {
   async findGuestByName(
     spreadsheetId: string, 
     searchTerm: string,
-    range: string = 'Sheet1!A:D'
+    range: string = 'Guests!A:D'
   ): Promise<GuestReservation | null> {
     try {
       const reservations = await this.getGuestReservations(spreadsheetId, range);

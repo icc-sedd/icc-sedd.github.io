@@ -54,12 +54,12 @@ const Entourage: React.FC = () => {
               <p className="entourage-sponsors-name">Mrs. Julita Nicolas</p>
               <p className="entourage-sponsors-name">Mrs. Penny Perido</p>
               <p className="entourage-sponsors-name">Mrs. Grace Dizon</p>
-              <p className="entourage-sponsors-name">Mrs. Faye Marie Zapatero</p>
+              <p className="entourage-sponsors-name">Mrs. Faye Zapatero</p>
               <p className="entourage-sponsors-name">Mrs. Juliebee Tinamisan</p>
               <p className="entourage-sponsors-name">Mrs. Lourdes Fababier</p>
               <p className="entourage-sponsors-name">Ms. Janette Rosario</p>
               <p className="entourage-sponsors-name">Ms. Joje Fababier</p>
-              <p className="entourage-sponsors-name">Mrs. Aillen Ariola Caguiwa</p>
+              <p className="entourage-sponsors-name">Mrs. Aillen Caguiwa</p>
               <p className="entourage-sponsors-name">Ms. Marilou Dela Gracia</p>
               <p className="entourage-sponsors-name">Mrs. Margie Bermas</p>
             </div>

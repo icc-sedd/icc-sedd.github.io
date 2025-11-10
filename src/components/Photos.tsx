@@ -5,7 +5,6 @@ const Photos: React.FC = () => {
 
   // Gallery images from the src/images/gallery folder
   const galleryImages = useMemo(() => [
-    'MAT05252.jpg',
     'MAT05257.jpg',
     'MAT05343.jpg',
     'MAT05441.jpg',
@@ -16,8 +15,7 @@ const Photos: React.FC = () => {
     'MAT05797.jpg',
     'MAT05798.jpg',
     'MAT05895.jpg',
-    'MAT05979.jpg',
-    'MAT06063.jpg',
+    'MAT05979.jpg',    
     'MAT06071.jpg',
     'MAT06172.jpg',
     'MAT06227.jpg',

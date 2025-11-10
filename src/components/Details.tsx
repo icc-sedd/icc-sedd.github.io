@@ -1,4 +1,5 @@
 import React from 'react';
+import Countdown from './Countdown';
 import church from '../images/church.png';
 import reception from '../images/reception.png';
 
@@ -49,6 +50,9 @@ const Details: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Countdown Section */}
+        <Countdown />
       </div>
     </section>
   );

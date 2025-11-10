@@ -106,6 +106,6 @@ The Sheet ID is: `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`
 
 You can modify the search range in `Details.tsx`:
 ```typescript
-// Change 'Sheet1!A:D' to match your sheet name and range
-<GuestLookup spreadsheetId={spreadsheetId} range="Sheet1!A:D" />
+// Change 'Guests!A:D' to match your sheet name and range
+<GuestLookup spreadsheetId={spreadsheetId} range="Guests!A:D" />
 ```

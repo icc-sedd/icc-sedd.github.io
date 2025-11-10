@@ -9,7 +9,7 @@ const Countdown: React.FC = () => {
   });
 
   useEffect(() => {
-    const weddingDate = new Date('December 15, 2025 14:00:00').getTime();
+    const weddingDate = new Date('December 13, 2025 14:00:00').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
