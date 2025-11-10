@@ -21,6 +21,13 @@ const Options: React.FC = () => {
     }
   };
 
+  const handleRSVPClick = () => {
+    const rsvpSection = document.getElementById('rsvp');
+    if (rsvpSection) {
+      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="options" className="section options-section">
       <div className="container options-container">
@@ -41,10 +48,10 @@ const Options: React.FC = () => {
          </div>
          <div className="options-row-2">
             <img src={couple1} alt="couple1" className="couple1" />
-            <div className="RSVP-card">
-               <h3 className="RSVP-title-1">Kindly</h3>
-               <h3 className="RSVP-title-2">RSVP</h3>
-               <h3 className="RSVP-title-1">Here</h3>
+            <div className="rsvp-card" onClick={handleRSVPClick} style={{ cursor: 'pointer' }}>
+               <p className="rsvp-text">Kindly</p>
+               <p className="rsvp-text">RSVP</p>
+               <p className="rsvp-text">Here</p>
                <img src={arrow} alt="arrow" className="gold-arrow" />
             </div>
          </div>

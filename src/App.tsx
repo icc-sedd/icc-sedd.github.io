@@ -7,10 +7,12 @@ import Details from './components/Details';
 import Entourage from './components/Entourage';
 import WeddingAttire from './components/WeddingAttire';
 import Photos from './components/Photos';
+import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
 import ImagePreloader from './components/ImagePreloader';
 import LoadingScreen from './components/LoadingScreen';
+import SpotifyWidget from './components/SpotifyWidget';
 
 function App() {
   const [hasGuestId, setHasGuestId] = useState<boolean>(false);
@@ -125,10 +127,12 @@ function App() {
         <Home />
         <Options />
         <Entourage />
+        <Details />
         <WeddingAttire />
-        <Details />        
+        <RSVP />
         <Photos />
         <Footer />
+        <SpotifyWidget />
       </div>
     </div>
   );

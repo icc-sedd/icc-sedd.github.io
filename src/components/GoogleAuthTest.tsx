@@ -106,7 +106,7 @@ const GoogleAuthTest: React.FC = () => {
     try {
       const response = await window.gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: sheetId,
-        range: 'Sheet1!A1:D1',
+        range: 'Guests!A1:D1',
       });
       
       if (response.result.values && response.result.values.length > 0) {
@@ -195,7 +195,7 @@ const GoogleAuthTest: React.FC = () => {
       addTest('Sheet Access After Auth', 'pending', 'Testing sheet access after authentication...');
       const response = await window.gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: sheetId,
-        range: 'Sheet1!A1:D10',
+        range: 'Guests!A1:D10',
       });
       
       if (response.result.values && response.result.values.length > 0) {

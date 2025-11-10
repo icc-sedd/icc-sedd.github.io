@@ -29,22 +29,7 @@ const Header: React.FC = () => {
     if (guestIdFromUrl) {
       // If GuestID exists in URL, show the open envelope immediately
       setIsOpening(true);
-      
-      // After 5 seconds, scroll to Home section
-      setTimeout(() => {
-        const homeSection = document.getElementById('home');
-        if (homeSection) {
-          // Get the absolute position of the home section
-          const elementPosition = homeSection.getBoundingClientRect().top + window.pageYOffset;
-          // Increased offset to account for navbar + some spacing
-          const offsetPosition = elementPosition;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 5000);
+    
     }
   }, []);
 

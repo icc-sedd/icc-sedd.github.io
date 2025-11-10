@@ -1212,30 +1212,6 @@ body {
   filter: brightness(1.05);
 }
 
-.RSVP-card {
-  padding: 2.85rem 1.9rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 5px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(245, 218, 131, 0.3);
-  max-width: 400px;
-  transform: scale(0.95);
-  text-align: center;
-  rotate: calc(10deg);
-  position: relative;
-  animation: floatMinimal 3s ease-in-out infinite;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.RSVP-card:hover {
-  animation: none;
-  box-shadow: 0 30px 80px rgba(143, 94, 54, 0.25);
-  filter: brightness(1.05);
-}
-
 .gold-arrow {
   width: 120px;
   height: auto;
@@ -1337,24 +1313,6 @@ body {
 .couple1:hover {
   animation: none;
   filter: brightness(1.1) drop-shadow(0 10px 30px rgba(143, 94, 54, 0.2));
-}
-
-.RSVP-title-2 {
-  font-family: 'Moontime', cursive;
-  font-size: 4rem;
-  color: #b8860b;
-  font-weight: 400;
-}
-
-.RSVP-title-1 {
-  font-family: "TAN Angleton", "Lora", serif;
-  font-size: 2.6rem;
-  font-weight: 100;
-  color: #b8860b;
-  letter-spacing: 0.1rem;
-  line-height: 0.5;
-  margin: 0;
-  text-transform: uppercase;
 }
 
 .wedding-details-detail {
@@ -1742,7 +1700,7 @@ position: absolute;
   }
 
   .wedding-entourage-card,
-  .RSVP-card {
+  .rsvp-card {
     max-width: 300px;
     padding: 2rem 1.5rem;
   }
@@ -1781,8 +1739,7 @@ position: absolute;
     width: 100%;
   }
 
-  .wedding-entourage-card,
-  .RSVP-card {
+  .wedding-entourage-card {
     max-width: 280px;
     padding: 1.5rem 1.2rem;
   }
@@ -1801,11 +1758,6 @@ position: absolute;
     max-width: 120px;
   }
 
-  .RSVP-title-2 {
-    font-size: 3rem;
-  }
-
-  .RSVP-title-1,
   .entourage-title-entourage {
     font-size: 2rem;
   }
@@ -1846,8 +1798,7 @@ position: absolute;
     width: 100%;
   }
 
-  .wedding-entourage-card,
-  .RSVP-card {
+  .wedding-entourage-card {
     max-width: 240px;
     padding: 1.2rem 1rem;
   }
@@ -1866,11 +1817,6 @@ position: absolute;
     max-width: 100px;
   }
 
-  .RSVP-title-2 {
-    font-size: 2.5rem;
-  }
-
-  .RSVP-title-1,
   .entourage-title-entourage {
     font-size: 1.5rem;
   }
@@ -2063,6 +2009,16 @@ section.section {
   min-height: 100vh;
   padding: 6rem 2rem 4rem;
   position: relative;
+}
+
+section#rsvp.section {
+  background: url('./images/background-silk.png') center/cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: auto;
+  padding: 2rem 2rem 4rem;
+  position: relative;
+  scroll-margin-top: 120px;
 }
 
 /* Navbar Component Styles */
@@ -3431,6 +3387,187 @@ scale: 2;
   padding-top: 0;
 }
 
+/* Details Section Styling */
+.details-wrapper {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 350px;
+  max-width: 450px;
+  text-align: center;
+}
+
+.details-label {
+  font-family: 'Moontime', cursive;
+  font-size: 2.5rem;
+  color: #b8860b;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.details-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  min-height: 250px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.details-image-container:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);
+}
+
+.details-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 280px;
+  transition: transform 0.3s ease;
+}
+
+.details-image-container:hover .details-image {
+  transform: scale(1.08);
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.venue-name {
+  font-family: 'TAN Angleton', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a3728;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.venue-address {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.venue-time {
+  font-family: 'TAN Angleton', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #b8860b;
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 0 0;
+}
+
+.details-note {
+  font-family: 'Lora', serif;
+  font-size: 0.85rem;
+  color: #999;
+  margin: 1rem 0 0 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .details-wrapper {
+    gap: 2rem;
+  }
+
+  .details-card {
+    min-width: 300px;
+    max-width: 400px;
+  }
+
+  .venue-name {
+    font-size: 1.3rem;
+  }
+
+  .venue-time {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .details-wrapper {
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .details-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .details-label {
+    font-size: 1.3rem;
+  }
+
+  .venue-name {
+    font-size: 1.2rem;
+  }
+
+  .venue-time {
+    font-size: 1.4rem;
+  }
+
+  .details-image-container {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-wrapper {
+    gap: 1.5rem;
+  }
+
+  .details-label {
+    font-size: 1.1rem;
+  }
+
+  .details-image-container {
+    padding: 0.75rem;
+    min-height: 180px;
+  }
+
+  .details-image {
+    max-height: 200px;
+  }
+
+  .venue-name {
+    font-size: 1rem;
+  }
+
+  .venue-address {
+    font-size: 0.9rem;
+  }
+
+  .venue-time {
+    font-size: 1.3rem;
+  }
+}
+
 /* ==========================================================================
    PHOTOS/GALLERY SECTION
    ========================================================================== */
@@ -3485,12 +3622,13 @@ scale: 2;
   overflow: hidden;
   background: #f5f5f5;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
   cursor: pointer;
+  will-change: transform;
 }
 
 .photo-zoom:hover {
-  transform: scale(1.02);
+  transform: translate3d(0, 0, 0) scale(1.02);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -3499,11 +3637,12 @@ scale: 2;
   width: 100%;
   height: 230px;
   object-fit: cover;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .photo-zoom:hover img {
-  transform: scale(1.05);
+  transform: translate3d(0, 0, 0) scale(1.05);
 }
 
 /* Custom Lightbox Modal */
@@ -3698,5 +3837,652 @@ scale: 2;
     padding-left: 2px;
     padding-right: 2px;
     margin-bottom: 4px;
+  }
+}
+
+/* RSVP Section Styling */
+#rsvp.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp-card {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(245, 218, 131, 0.3);
+  max-width: 450px;
+  transform: scale(0.95);
+  text-align: center;
+  rotate: calc(10deg);
+  animation: floatMinimal 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.rsvp-card:hover {
+  animation: none;
+  box-shadow: 0 30px 80px rgba(143, 94, 54, 0.25);
+  filter: brightness(1.05);
+}
+
+.rsvp-text {
+  font-family: 'Moontime', cursive;
+  font-size: 2.5rem;
+  color: #b8860b;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  margin: 0.5rem 0;
+  line-height: 1.2;
+}
+
+.rsvp-message {
+  background: transparent;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 600px;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.rsvp-message p {
+  font-size: 1.1rem;
+  color: #4a3728;
+  margin: 0;
+}
+
+.rsvp-message.loading {
+  background: rgba(255, 243, 205, 0.9);
+  border: 2px solid #d4af37;
+}
+
+.rsvp-message.error {
+  background: rgba(255, 200, 200, 0.9);
+  border: 2px solid #dc3545;
+  color: #dc3545;
+}
+
+.rsvp-message.info {
+  background: rgba(220, 240, 255, 0.9);
+  border: 2px solid #0099ff;
+}
+
+.rsvp-guest-info {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 1rem 0.8rem;
+  max-width: 350px;
+  margin: 0.5rem auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+.rsvp-guest-info h2 {
+  font-family: 'TAN Angleton', 'Lora', serif;
+  font-size: 1.2rem;
+  color: #b8860b;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.seat-allocation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.seat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(184, 134, 11, 0.1);
+  border-left: 4px solid #b8860b;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.seat-item.total {
+  background: rgba(184, 134, 11, 0.2);
+  border-left: 4px solid #d4af37;
+  font-weight: bold;
+}
+
+.seat-label {
+  font-family: 'Lora', serif;
+  color: #4a3728;
+  font-weight: 600;
+}
+
+.seat-count {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  color: #b8860b;
+  font-weight: bold;
+}
+
+.rsvp-submit-btn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lora', serif;
+}
+
+.rsvp-decline-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #dc3545 0%, #e57373 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lora', serif;
+}
+
+.rsvp-decline-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+}
+
+.rsvp-decline-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rsvp-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+}
+
+.rsvp-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* RSVP Existing Information */
+.rsvp-existing-info {
+  background: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid #4caf50;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2rem 0 1.5rem 0;
+}
+
+.rsvp-status {
+  color: #2e7d32;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+}
+
+.rsvp-submitted-names {
+  color: #4a3728;
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+}
+
+.rsvp-submitted-names strong {
+  color: #b8860b;
+  font-weight: 600;
+}
+
+/* RSVP Form Modal */
+.rsvp-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+.rsvp-form-container {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(184, 134, 11, 0.3);
+  animation: slideIn 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.rsvp-form-container h2 {
+  font-family: 'TAN Angleton', 'Lora', serif;
+  font-size: 1.5rem;
+  color: #b8860b;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.form-subtitle {
+  text-align: center;
+  color: #4a3728;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.form-section {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #b8860b;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: -0.2rem;
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+
+.form-field,
+.form-field-static {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-radius: 6px;
+  font-family: 'Lora', serif;
+  color: #4a3728;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.form-field:focus {
+  outline: none;
+  border-color: #b8860b;
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+  background: rgba(255, 255, 255, 1);
+}
+
+.form-field:disabled {
+  background: rgba(245, 243, 240, 0.8);
+  color: #999;
+  cursor: not-allowed;
+}
+
+.form-field-static {
+  display: flex;
+  align-items: center;
+  background: rgba(184, 134, 11, 0.05);
+  color: #b8860b;
+  font-weight: 600;
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  pointer-events: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-submit {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lora', serif;
+}
+
+.btn-cancel {
+  background: rgba(180, 180, 180, 0.5);
+  color: #4a3728;
+  border: 1px solid rgba(180, 180, 180, 0.8);
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: rgba(180, 180, 180, 0.7);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
+  color: #ffffff;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rsvp-message.success {
+  background: rgba(200, 255, 200, 0.9);
+  border: 2px solid #28a745;
+  color: #155724;
+}
+
+@media (max-width: 768px) {
+  .rsvp-guest-info {
+    padding: 2rem 1.5rem;
+  }
+
+  .rsvp-guest-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .seat-item {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .seat-count {
+    font-size: 1.5rem;
+  }
+
+  .rsvp-existing-info {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .rsvp-status {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.9rem;
+  }
+
+  .rsvp-submitted-names {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .rsvp-card {
+    max-width: 300px;
+    padding: 2.5rem 2rem;
+  }
+
+  .rsvp-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rsvp-card {
+    max-width: 250px;
+    padding: 2rem 1.5rem;
+  }
+
+  .rsvp-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .rsvp-form-container {
+    padding: 2rem;
+    max-width: 90vw;
+  }
+
+  .rsvp-form-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .rsvp-form-modal {
+    padding: 1rem;
+  }
+
+  .rsvp-form-container {
+    padding: 1.5rem;
+  }
+
+  .form-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-field,
+  .form-field-static {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+/* Footer Styling */
+.footer {
+  background: url('./images/background-silk.png') center/cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: linear-gradient(135deg, rgba(245, 243, 240, 0.1) 0%, rgba(250, 248, 245, 0.1) 50%), url('./images/background-silk.png') center/cover;
+  background-attachment: fixed;
+  padding: 2rem 1rem;
+  text-align: center;  
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer p {
+  margin: 0;
+  color: #000000 !important;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  font-weight: 500;  
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Countdown Timer Styles */
+.countdown-container {
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  border-top: 3px solid #8f5e36;
+}
+
+.countdown-container h3 {
+  font-family: 'TAN Angleton', 'Lora', serif;
+  font-size: 2.5rem;
+  color: #8f5e36;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.countdown-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #8f5e36;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #6d4428;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .countdown-container {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .countdown-container h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .countdown-timer {
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    min-width: 80px;
+  }
+
+  .countdown-number {
+    font-size: 2.5rem;
+  }
+
+  .countdown-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-container {
+    margin-top: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .countdown-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .countdown-timer {
+    gap: 0.8rem;
+  }
+
+  .countdown-item {
+    min-width: 70px;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Spotify Widget Styles */
+.spotify-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 100px;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .spotify-widget {
+    width: 280px;
+    height: 100px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotify-widget {
+    width: 250px;
+    height: 100px;
+    bottom: 10px;
+    right: 10px;
   }
 }

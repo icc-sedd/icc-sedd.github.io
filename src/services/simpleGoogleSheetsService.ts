@@ -15,12 +15,9 @@ class SimpleGoogleSheetsService {
     this.apiKey = apiKey;
   }
 
-  async getGuestData(): Promise<GuestReservation[]> {
+  async getSheetNames(): Promise<string[]> {
     try {
-      // For public sheets, we can use the Google Sheets API without OAuth
-      const range = 'Sheet1!A:D'; // Assuming columns A-D contain: Name, Seats, Kids Seat, Guest ID
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetId}/values/${range}?key=${this.apiKey}`;
-      
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetId}?key=${this.apiKey}`;
       const response = await fetch(url);
       
       if (!response.ok) {
@@ -28,19 +25,61 @@ class SimpleGoogleSheetsService {
       }
       
       const data = await response.json();
+      const sheetNames = data.sheets.map((sheet: any) => sheet.properties.title);
+      console.log('Available sheets:', sheetNames);
+      return sheetNames;
+    } catch (error) {
+      console.error('Error fetching sheet names:', error);
+      return [];
+    }
+  }
+
+  async getGuestData(): Promise<GuestReservation[]> {
+    try {
+      // First, check what sheets are available
+      const sheetNames = await this.getSheetNames();
+      
+      // Try to find a sheet with "Guest" in the name (case-insensitive)
+      let sheetName = 'Guests'; // default
+      const guestSheet = sheetNames.find(name => name.toLowerCase().includes('guest'));
+      if (guestSheet) {
+        sheetName = guestSheet;
+      }
+      
+      console.log('Using sheet:', sheetName);
+      
+      // For public sheets, we can use the Google Sheets API without OAuth
+      const range = encodeURIComponent(`'${sheetName}'!A:D`); // Columns A-D: Name, Seats, Kids Seat, Guest ID
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetId}/values/${range}?key=${this.apiKey}`;
+      
+      console.log('Fetching guest data from:', url);
+      
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Google Sheets API error response:', response.status, errorData);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
       
       if (!data.values || data.values.length === 0) {
+        console.warn('No data found in sheet:', sheetName);
         return [];
       }
       
       // Skip header row and convert to GuestReservation objects
-      const guests: GuestReservation[] = data.values.slice(1).map((row: any[]) => ({
-        name: row[0] || '',
-        seats: parseInt(row[1]) || 0,
-        kidsSeats: parseInt(row[2]) || 0,
-        guestId: row[3] || ''
-      }));
+      const guests: GuestReservation[] = data.values.slice(1)
+        .filter((row: any[]) => row[0]) // Filter out empty rows
+        .map((row: any[]) => ({
+          name: row[0] || '',
+          seats: parseInt(row[1]) || 0,
+          kidsSeats: parseInt(row[2]) || 0,
+          guestId: row[3] || ''
+        }));
       
+      console.log('Successfully loaded guests:', guests.length);
       return guests;
     } catch (error) {
       console.error('Error fetching guest data:', error);
