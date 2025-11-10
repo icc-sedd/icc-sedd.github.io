@@ -1,10 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.8b12c37e.css",
-    "main.js": "/static/js/main.e532be7c.js",
-    "static/media/MAT05252.jpg": "/static/media/MAT05252.5ff0e77069dd03021cdc.jpg",
+    "main.css": "/static/css/main.209ba6b1.css",
+    "main.js": "/static/js/main.1c3a0244.js",
     "static/media/MAT06172.jpg": "/static/media/MAT06172.c309108db16a3396b5c5.jpg",
-    "static/media/MAT06063.jpg": "/static/media/MAT06063.05ca5325a6108e2ea38d.jpg",
     "static/media/MAT05343.jpg": "/static/media/MAT05343.a657c172662cc059b856.jpg",
     "static/media/MAT05979.jpg": "/static/media/MAT05979.eae6249d13807c6a3227.jpg",
     "static/media/MAT06244.jpg": "/static/media/MAT06244.49a8795f58de25df8e45.jpg",
@@ -34,6 +32,8 @@
     "static/media/flower-pair.png": "/static/media/flower-pair.de5d578bb1d5a2422b2f.png",
     "static/media/entourage.png": "/static/media/entourage.8de3c0128b7fe2eab2e9.png",
     "static/media/champagne-glass.png": "/static/media/champagne-glass.e0860f0430ad974abaff.png",
+    "static/media/reception.png": "/static/media/reception.4058a82271c13b5bd273.png",
+    "static/media/church.png": "/static/media/church.68e693dd03755970c32b.png",
     "static/media/candle-logo.png": "/static/media/candle-logo.97c1ac457c0ae5075b54.png",
     "static/media/moon-time-regular.ttf": "/static/media/moon-time-regular.b83db42eb10b3fc7bd0f.ttf",
     "static/media/guests.png": "/static/media/guests.5f1986e48c758b2ec777.png",
@@ -43,11 +43,11 @@
     "static/media/heart-drawing.png": "/static/media/heart-drawing.b3d4134cf55139f6121a.png",
     "static/media/leaves-minimalist-gold.png": "/static/media/leaves-minimalist-gold.92d92ed8a9132fa316e1.png",
     "index.html": "/index.html",
-    "main.8b12c37e.css.map": "/static/css/main.8b12c37e.css.map",
-    "main.e532be7c.js.map": "/static/js/main.e532be7c.js.map"
+    "main.209ba6b1.css.map": "/static/css/main.209ba6b1.css.map",
+    "main.1c3a0244.js.map": "/static/js/main.1c3a0244.js.map"
   },
   "entrypoints": [
-    "static/css/main.8b12c37e.css",
-    "static/js/main.e532be7c.js"
+    "static/css/main.209ba6b1.css",
+    "static/js/main.1c3a0244.js"
   ]
 }
