@@ -23,6 +23,32 @@ class RSVPServiceSimplified {
     return Promise.resolve();
   }
 
+  private async fetchRSVPDataFromSheet(): Promise<any[]> {
+    try {
+      const range = encodeURIComponent("'RSVP Response'!A:E"); // Columns A-E: GuestID, Guest Name, Attendee Names, Attending, Timestamp
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.spreadsheetId}/values/${range}?key=${this.apiKey}`;
+      
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        console.error('Error fetching RSVP data from sheet:', response.status);
+        return [];
+      }
+      
+      const data = await response.json();
+      
+      if (!data.values || data.values.length === 0) {
+        return [];
+      }
+      
+      // Skip header row and return all data
+      return data.values.slice(1).filter((row: any[]) => row[0]); // Filter out empty rows
+    } catch (error) {
+      console.error('Error fetching RSVP data from sheet:', error);
+      return [];
+    }
+  }
+
   async submitRSVPResponse(sheetName: string, response: RSVPResponse): Promise<boolean> {
     try {
       const timestamp = new Date().toLocaleString();
@@ -79,24 +105,41 @@ class RSVPServiceSimplified {
 
   async checkExistingResponse(sheetName: string, guestId: string): Promise<RSVPResponse | null> {
     try {
-      // If endpoint is configured, try to fetch from Apps Script first
-      if (this.endpoint && this.endpoint.includes('script.google.com')) {
-        try {
-          // A proper implementation would fetch from the sheet via Apps Script
-          // For now, check localStorage which persists across sessions
-          const stored = localStorage.getItem(`rsvp_${guestId}`);
-          if (stored) {
-            return JSON.parse(stored);
-          }
-        } catch (fetchError) {
-          console.log('Could not fetch existing RSVP from server');
-        }
-      }
-      
-      // Primary storage: check localStorage (persists across browser sessions)
+      // First, check localStorage (client-side cache for immediate response)
       const stored = localStorage.getItem(`rsvp_${guestId}`);
       if (stored) {
+        console.log('✓ Found RSVP data in localStorage for guest:', guestId);
         return JSON.parse(stored);
+      }
+
+      // If not in localStorage, fetch from the Google Sheet
+      console.log('📡 Fetching existing RSVP from Google Sheet for guest:', guestId);
+      const rsvpData = await this.fetchRSVPDataFromSheet();
+      
+      // Find the matching guest's RSVP
+      const matchingRow = rsvpData.find((row: any[]) => row[0] === guestId);
+      
+      if (matchingRow) {
+        // Parse the attendee names (they're stored as "Name1 | Name2 | Name3")
+        const attendeeNamesStr = matchingRow[2] || '';
+        const attendeeNames = attendeeNamesStr
+          .split('|')
+          .map((name: string) => name.trim())
+          .filter((name: string) => name.length > 0);
+
+        const rsvpResponse: RSVPResponse = {
+          guestId: matchingRow[0],
+          guestName: matchingRow[1],
+          attendeeNames: attendeeNames,
+          attending: matchingRow[3] || 'Yes',
+          timestamp: matchingRow[4]
+        };
+
+        // Cache it in localStorage for future use
+        localStorage.setItem(`rsvp_${guestId}`, JSON.stringify(rsvpResponse));
+        console.log('✓ Found existing RSVP and cached it:', rsvpResponse);
+        
+        return rsvpResponse;
       }
       
       return null;
