@@ -4836,6 +4836,36 @@ section#rsvp.section {
   font-weight: 600;
 }
 
+/* RSVP Declined Information */
+.rsvp-existing-info-declined {
+  background: rgba(220, 53, 69, 0.1);
+  border-left: 4px solid #dc3545;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2rem 0 1.5rem 0;
+}
+
+.rsvp-status-declined {
+  color: #c82333;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+}
+
+.rsvp-declined-message {
+  color: #4a3728;
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+}
+
+.rsvp-declined-message strong {
+  color: #dc3545;
+  font-weight: 600;
+}
+
 /* RSVP Form Modal */
 .rsvp-form-modal {
   position: fixed;
@@ -4995,6 +5025,124 @@ section#rsvp.section {
   background: rgba(200, 255, 200, 0.9);
   border: 2px solid #28a745;
   color: #155724;
+}
+
+/* RSVP Decline Confirmation Modal */
+.rsvp-confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.rsvp-confirmation-container {
+  background: linear-gradient(135deg, #fff8f3 0%, #ffffff 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(184, 134, 11, 0.3);
+  animation: slideIn 0.3s ease;
+  text-align: center;
+}
+
+.rsvp-confirmation-container h3 {
+  font-family: 'TAN Angleton', 'Lora', serif;
+  font-size: 1.8rem;
+  color: #dc3545;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.rsvp-confirmation-container p {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #4a3728;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-confirm-decline {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lora', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.btn-cancel {
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.6), rgba(212, 175, 55, 0.6));
+  color: #4a3728;
+  border: 1px solid rgba(184, 134, 11, 0.5);
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.8), rgba(212, 175, 55, 0.8));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+}
+
+.btn-confirm-decline {
+  background: linear-gradient(135deg, #dc3545 0%, #e57373 100%);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-confirm-decline:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+}
+
+.btn-cancel:disabled,
+.btn-confirm-decline:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (max-width: 1024px) {
