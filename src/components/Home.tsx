@@ -6,10 +6,11 @@ import bridegroomImage from '../images/gallery/MAT06071.jpg';
 
 const Home: React.FC = () => {
   return (
-    <section id="home" className="home-section">
-      <div id="home-anchor" className="home-anchor"></div>
-      <div className="home-content">
-        <img src={bridegroomImage} alt="Bride and Groom" className="bridegroom-divider-image" />
+    <>
+      <img src={bridegroomImage} alt="Bride and Groom" className="bridegroom-divider-image" />
+      <section id="home" className="home-section">
+        <div id="home-anchor" className="home-anchor"></div>
+        <div className="home-content">
         <div className="invitation-cards-wrapper">
           <div className="invitation-card">
             <img src={churchIcon} alt="Church" className="church-icon" />
@@ -41,6 +42,7 @@ const Home: React.FC = () => {
       </div>
       <img src={flowerRow} alt="Flowers" className="flower-row-decoration" />
     </section>
+    </>
   );
 };
 

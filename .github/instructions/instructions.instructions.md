@@ -45,6 +45,8 @@ This project is a web application built using React for the frontend and Node.js
 - **Additional instructions**: Make sure to build whole project for any errors, and ensure all tests pass before submitting any code changes.
 
 Maintain the port 3000 and never suggest changing it.
+
+dont allow any duplicate media queries in css files.
     
 By adhering to these guidelines, we can maintain a high-quality codebase that is easy to understand, maintain, and extend in the future.
 
