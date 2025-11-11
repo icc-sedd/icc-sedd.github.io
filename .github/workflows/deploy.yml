@@ -38,6 +38,7 @@ jobs:
       env:
         REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
         REACT_APP_GOOGLE_SHEET_ID: ${{ secrets.REACT_APP_GOOGLE_SHEET_ID }}
+        REACT_APP_RSVP_ENDPOINT: ${{ secrets.REACT_APP_RSVP_ENDPOINT }}
       
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main'
