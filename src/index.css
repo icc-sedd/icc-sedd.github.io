@@ -3691,6 +3691,17 @@ section#rsvp.section {
   text-transform: uppercase;
 }
 
+.attire-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4a3728;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .attire-section {
   display: flex;
   flex-direction: column;
