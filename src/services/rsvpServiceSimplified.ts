@@ -36,8 +36,8 @@ class RSVPServiceSimplified {
         timestamp: timestamp
       };
 
-      // Store in sessionStorage for quick access
-      sessionStorage.setItem(`rsvp_${response.guestId}`, JSON.stringify({
+      // Store in localStorage for persistent access across browser sessions
+      localStorage.setItem(`rsvp_${response.guestId}`, JSON.stringify({
         guestId: response.guestId,
         guestName: response.guestName,
         attendeeNames: response.attendeeNames,
@@ -79,12 +79,12 @@ class RSVPServiceSimplified {
 
   async checkExistingResponse(sheetName: string, guestId: string): Promise<RSVPResponse | null> {
     try {
-      // If endpoint is configured, fetch from Apps Script
+      // If endpoint is configured, try to fetch from Apps Script first
       if (this.endpoint && this.endpoint.includes('script.google.com')) {
         try {
-          // For now, we'll use localStorage as a backup
           // A proper implementation would fetch from the sheet via Apps Script
-          const stored = sessionStorage.getItem(`rsvp_${guestId}`);
+          // For now, check localStorage which persists across sessions
+          const stored = localStorage.getItem(`rsvp_${guestId}`);
           if (stored) {
             return JSON.parse(stored);
           }
@@ -93,8 +93,8 @@ class RSVPServiceSimplified {
         }
       }
       
-      // Fallback: check localStorage
-      const stored = sessionStorage.getItem(`rsvp_${guestId}`);
+      // Primary storage: check localStorage (persists across browser sessions)
+      const stored = localStorage.getItem(`rsvp_${guestId}`);
       if (stored) {
         return JSON.parse(stored);
       }

@@ -29,6 +29,17 @@ jobs:
         
     - name: Install dependencies
       run: npm install
+    
+    - name: Verify secrets are configured
+      env:
+        REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+        REACT_APP_GOOGLE_SHEET_ID: ${{ secrets.REACT_APP_GOOGLE_SHEET_ID }}
+        REACT_APP_RSVP_ENDPOINT: ${{ secrets.REACT_APP_RSVP_ENDPOINT }}
+      run: |
+        if [ -z "$REACT_APP_GOOGLE_API_KEY" ]; then echo "ERROR: REACT_APP_GOOGLE_API_KEY secret not set" && exit 1; fi
+        if [ -z "$REACT_APP_GOOGLE_SHEET_ID" ]; then echo "ERROR: REACT_APP_GOOGLE_SHEET_ID secret not set" && exit 1; fi
+        if [ -z "$REACT_APP_RSVP_ENDPOINT" ]; then echo "ERROR: REACT_APP_RSVP_ENDPOINT secret not set" && exit 1; fi
+        echo "✓ All required secrets are configured"
       
     - name: Generate gallery manifest
       run: npm run generate-gallery
@@ -36,6 +47,8 @@ jobs:
     - name: Build
       run: npm run build
       env:
+        # These secrets are embedded in the React build at compile time
+        # The API key is safe to expose as it's restricted to your domain in Google Cloud Console
         REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
         REACT_APP_GOOGLE_SHEET_ID: ${{ secrets.REACT_APP_GOOGLE_SHEET_ID }}
         REACT_APP_RSVP_ENDPOINT: ${{ secrets.REACT_APP_RSVP_ENDPOINT }}
