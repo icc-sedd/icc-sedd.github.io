@@ -1455,7 +1455,7 @@ section#entourage.section {
   position: absolute;
   bottom: 30%;
   left: -10%;
-  width: 350px;
+  width: 250px;
   max-width: 95%;
   height: auto;
   z-index: 0;
@@ -1466,7 +1466,7 @@ section#entourage.section {
   position: absolute;
   bottom: 25%;
   right: -5%;
-  width: 350px;
+  width: 250px;
   max-width: 95%;
   height: auto;
   z-index: 0;
@@ -3075,12 +3075,6 @@ section#rsvp.section {
 
 /* Small Phones (430px and below) */
 @media (max-width: 430px) {
-  .champagne-glass {
-    width: 80px;
-    left: 40%;
-    bottom: -1%;
-  }
-
   .header {
     padding: 5rem 1rem 2rem 1rem;
   }
@@ -3100,20 +3094,27 @@ section#rsvp.section {
     margin-bottom: 1.5rem;
   }
 
+  .envelope-contents {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+
   .envelope-wrapper {
     max-width: 500px;
   }
 
-
-  .envelope-closed,
-  .envelope-open {
-    width: 500px;
-    max-width: 100%;
-  }
-
   .envelope-objects {
-    max-width: 280px;
-    top: 20%;
+    max-width: 500px;
+    top: 15%;
   }
 
   .flower-left,
@@ -3142,7 +3143,7 @@ section#rsvp.section {
     margin: 0;
     width: 95%;
     min-width: auto;
-    padding: 0.6rem 0;
+    padding: 0.6rem 0.8rem;
     border-radius: 20px;
   }
 
@@ -3184,97 +3185,125 @@ section#rsvp.section {
   }
 
   .brand-text {
-    font-size: 1.1rem;
-    letter-spacing: 0.02rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.03rem;
   }
 
   .brand-date {
-    font-size: 0.55rem;
+    font-size: 0.58rem;
     margin-top: 0.15rem;
   }
 
-  /* Home Section for 430px and below */
+  .champagne-glass {
+    width: 85px;
+    left: 40%;
+    top: 37%;
+  }
+
+  /* Home Section for 431-480px */
   .home-section {
     padding: 6rem 0.5rem 3rem;
   }
 
   .home-content {
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.3rem;
     max-width: 100%;
     width: 100%;
   }
 
   .invitation-card {
-    padding: 1rem 0.75rem;
-    max-width: calc(50% - 0.25rem);
+    padding: 0.5rem 0.35rem;
+    max-width: calc(50% - 0.2rem);
   }
 
   .save-date-card {
-    max-width: calc(50% - 0.25rem);
+    max-width: calc(50% - 0.2rem);
   }
 
   .church-icon {
-    width: 50px;
-    margin-bottom: 0.75rem;
+    width: 25px;
+    margin-bottom: 0.2rem;
   }
 
   .invitation-header {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
   }
 
   .groom-name,
   .bride-name {
-    font-size: 2rem;
-    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.1rem;
+    line-height: 0.8;
   }
 
   .and-text {
-    font-size: 1.2rem;
-    margin: 0.75rem 0;
+    font-size: 0.55rem;
+    margin: 0.2rem 0;
   }
 
   .invitation-request {
-    font-size: 0.9rem;
-    margin-top: 1rem;
+    font-size: 0.5rem;
+    margin-top: 0.3rem;
+    line-height: 1.1;
   }
 
   .std-header {
-    font-size: 1.4rem;
+    font-size: 0.8rem;
   }
 
   .heart-icon {
-    width: 25px;
+    width: 12px;
+    margin-bottom: 0.1rem;
   }
 
   .std-month,
   .std-year {
-    font-size: 1.2rem;
+    font-size: 0.65rem;
+    margin: 0.1rem 0;
   }
 
   .std-day,
   .std-time {
-    font-size: 0.75rem;
+    font-size: 0.45rem;
   }
 
   .std-date {
-    font-size: 0.9rem;
+    font-size: 0.55rem;
   }
 
   .std-ceremony,
   .std-reception {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
 
   .std-location,
   .std-venue {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
   }
 
   .flower-row-decoration {
-    width: 200px;
+    width: 250px;
     bottom: -100px;
+  }
+
+  .entourage-main-title {
+    font-size: 2rem;
+  }
+
+  .entourage-parent-title,
+  .entourage-sponsors-title {
+    font-size: 1.5rem;
+  }
+
+  .entourage-party-title,
+  .entourage-party-subtitle,
+  .entourage-party-label,
+  .entourage-special-role-title,
+  .entourage-special-role-subtitle {
+    font-size: 1.5rem;
   }
 }
 
@@ -3400,124 +3429,80 @@ section#rsvp.section {
 
 /* Extra Small Phones (320px and below) */
 @media (max-width: 320px) {
-  .home-section {
-    padding: 5rem 0.25rem 2rem;
+  .header {
+    padding: 5rem 1rem 2rem 1rem;
   }
 
-  .home-content {
-    flex-direction: row;
-    gap: 0.25rem;
+  .header-content {
     max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+  }
+
+  .header-date {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .envelope-contents {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    right: 0;
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 50;
+    pointer-events: none;
   }
 
-  .invitation-card {
-    padding: 0.75rem 0.5rem;
-    max-width: calc(50% - 0.125rem);
+  .envelope-wrapper {
+    max-width: 500px;
   }
 
-  .save-date-card {
-    max-width: calc(50% - 0.125rem);
+  .envelope-objects {
+    max-width: 500px;
+    top: 15%;
   }
 
-  .church-icon {
-    width: 40px;
-    margin-bottom: 0.5rem;
+  .flower-left,
+  .flower-right {
+    width: 180px;
+    transform: scale(1.1);
   }
 
-  .invitation-header {
-    font-size: 0.85rem;
-    margin-bottom: 0.75rem;
+  .flower-left {
+    margin-right: -170px;
+    margin-top: 90px;
   }
 
-  .groom-name,
-  .bride-name {
-    font-size: 25px;
-    letter-spacing: 0.03em;
+  .flower-right {
+    margin-left: -170px;
+    margin-bottom: 90px;
   }
 
-  .and-text {
-    font-size: 12px;
-    margin: 0.5rem 0;
+  .candle-logo {
+    width: 55px;
   }
 
-  .invitation-request {
-    font-size: 0.75rem;
-    margin-top: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .std-header {
-    font-size: 1.2rem;
-  }
-
-  .heart-icon {
-    width: 20px;
-  }
-
-  .std-month,
-  .std-year {
-    font-size: 1rem;
-  }
-
-  .std-day,
-  .std-time {
-    font-size: 0.65rem;
-  }
-
-  .std-date {
-    font-size: 0.8rem;
-  }
-
-  .std-ceremony,
-  .std-reception {
-    font-size: 0.7rem;
-  }
-
-  .std-location,
-  .std-venue {
-    font-size: 0.7rem;
-  }
-
-  .flower-row-decoration {
-    width: 150px;
-    bottom: -80px;
-  }
-
+  /* Navbar mobile */
   .navbar {
     top: 0;
     margin: 0;
     width: 95%;
-    padding: 0.5rem 0.3rem;
-    border-radius: 15px;
-  }
-
-  .navbar-container {
-    padding: 0 0.5rem;
-  }
-
-  .navbar-brand {
-    min-width: 100px;
-  }
-
-  .brand-text {
-    font-size: 0.8rem;
-    letter-spacing: 0.01rem;
-  }
-
-  .brand-date {
-    font-size: 0.4rem;
-    margin-top: 0.1rem;
+    min-width: auto;
+    padding: 0.6rem 0.8rem;
+    border-radius: 20px;
   }
 
   .navbar-hamburger {
     display: flex;
-  }
-
-  .navbar-hamburger span {
-    width: 20px;
-    height: 2px;
-    margin: 2px 0;
   }
 
   .navbar-spacer {
@@ -3532,9 +3517,9 @@ section#rsvp.section {
     right: 0;
     flex-direction: column;
     background: rgba(245, 218, 131, 0.98);
-    border-radius: 10px;
-    margin-top: 8px;
-    padding: 0.5rem 0;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 1rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
@@ -3548,9 +3533,131 @@ section#rsvp.section {
 
   .navbar-menu a {
     display: block;
-    padding: 0.8rem 1rem;
-    font-size: 0.8rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     border-radius: 0;
+  }
+
+  .brand-text {
+    font-size: 1.15rem;
+    letter-spacing: 0.03rem;
+  }
+
+  .brand-date {
+    font-size: 0.58rem;
+    margin-top: 0.15rem;
+  }
+
+  .champagne-glass {
+    width: 85px;
+    left: 40%;
+    top: 37%;
+  }
+
+  /* Home Section for 431-480px */
+  .home-section {
+    padding: 6rem 0.5rem 3rem;
+  }
+
+  .home-content {
+    flex-direction: row;
+    gap: 0.3rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .invitation-card {
+    padding: 0.5rem 0.35rem;
+    max-width: calc(50% - 0.2rem);
+  }
+
+  .save-date-card {
+    max-width: calc(50% - 0.2rem);
+  }
+
+  .church-icon {
+    width: 30px;
+    margin-bottom: 0.3rem;
+  }
+
+  .invitation-header {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .groom-name,
+  .bride-name {
+    font-size: 0.9rem !important;
+    letter-spacing: 0.02em !important;
+    margin-bottom: 0.1rem !important;
+    line-height: 0.8 !important;
+  }
+
+  .and-text {
+    font-size: 0.5rem;
+    margin: 0.15rem 0;
+  }
+
+  .invitation-request {
+    font-size: 0.6rem;
+    margin-top: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .std-header {
+    font-size: 0.75rem;
+  }
+
+  .heart-icon {
+    width: 12px;
+    margin-bottom: 0.1rem;
+  }
+
+  .std-month,
+  .std-year {
+    font-size: 0.6rem;
+    margin: 0.1rem 0;
+  }
+
+  .std-day,
+  .std-time {
+    font-size: 0.45rem;
+  }
+
+  .std-date {
+    font-size: 0.55rem;
+  }
+
+  .std-ceremony,
+  .std-reception {
+    font-size: 0.5rem;
+  }
+
+  .std-location,
+  .std-venue {
+    font-size: 0.45rem;
+  }
+
+  .flower-row-decoration {
+    width: 250px;
+    bottom: -100px;
+  }
+
+  .entourage-main-title {
+    font-size: 2rem;
+  }
+
+  .entourage-parent-title,
+  .entourage-sponsors-title {
+    font-size: 1.5rem;
+  }
+
+  .entourage-party-title,
+  .entourage-party-subtitle,
+  .entourage-party-label,
+  .entourage-special-role-title,
+  .entourage-special-role-subtitle {
+    font-size: 1.5rem;
   }
 }
 
