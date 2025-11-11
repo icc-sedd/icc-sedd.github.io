@@ -13,6 +13,7 @@ const RSVP: React.FC = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [existingRSVP, setExistingRSVP] = useState<RSVPResponse | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [showDeclineConfirmation, setShowDeclineConfirmation] = useState(false);
 
   useEffect(() => {
     // Extract GuestID from URL parameters
@@ -62,7 +63,9 @@ const RSVP: React.FC = () => {
       if (foundGuest) {
         setGuest(foundGuest);
         // Initialize attendee names array with empty strings
-        setAttendeeNames(new Array(foundGuest.seats + foundGuest.kidsSeats).fill(''));
+        // Only show fields for additional guests (total seats - 1 for primary guest)
+        const additionalSeats = Math.max(0, (foundGuest.seats + foundGuest.kidsSeats) - 1);
+        setAttendeeNames(new Array(additionalSeats).fill(''));
 
         // Check if guest already has an RSVP
         const rsvpService = new RSVPServiceSimplified(sheetId, apiKey, endpoint);
@@ -246,11 +249,20 @@ const RSVP: React.FC = () => {
               </div>
             </div>
 
-            {existingRSVP && (
+            {existingRSVP && existingRSVP.attending === 'Yes' && (
               <div className="rsvp-existing-info">
                 <p className="rsvp-status">✅ You have already submitted your RSVP</p>
                 <p className="rsvp-submitted-names">
                   <strong>Attendees:</strong> {existingRSVP.attendeeNames.join(', ')}
+                </p>
+              </div>
+            )}
+
+            {existingRSVP && existingRSVP.attending === 'No' && (
+              <div className="rsvp-existing-info-declined">
+                <p className="rsvp-status-declined">❌ Thank you for letting us know</p>
+                <p className="rsvp-declined-message">
+                  <strong>Thank you</strong> for your response. We hope to celebrate with you on another occasion.
                 </p>
               </div>
             )}
@@ -263,15 +275,15 @@ const RSVP: React.FC = () => {
                   setIsUpdating(true);
                 }
               }}
-              disabled={isSubmitting}
+              disabled={isSubmitting || !!(existingRSVP && existingRSVP.attending === 'Yes')}
             >
               {existingRSVP ? 'Update RSVP' : 'Yes, Count Me In'}
             </button>
 
             <button
               className="rsvp-decline-btn"
-              onClick={handleDeclineRSVP}
-              disabled={isSubmitting}
+              onClick={() => setShowDeclineConfirmation(true)}
+              disabled={isSubmitting || !!(existingRSVP && (existingRSVP.attending === 'Yes' || existingRSVP.attending === 'No'))}
             >
               Sorry, I cannot make it
             </button>
@@ -295,14 +307,14 @@ const RSVP: React.FC = () => {
               {/* Attendee names form */}
               <div className="form-section">
                 <label className="form-label">Attendee Names</label>
-                <p className="form-hint">Enter the name for each seat (Total: {guest.seats + guest.kidsSeats})</p>
+                <p className="form-hint">Enter the name for each additional guest (Total: {Math.max(0, (guest.seats + guest.kidsSeats) - 1)})</p>
 
                 {attendeeNames.map((name, index) => (
                   <input
                     key={index}
                     type="text"
                     className="form-field"
-                    placeholder={`Attendee ${index + 1} Name`}
+                    placeholder={`Guest ${index + 2} Name`}
                     value={name}
                     onChange={(e) => handleAttendeeNameChange(index, e.target.value)}
                     disabled={isSubmitting}
@@ -337,6 +349,34 @@ const RSVP: React.FC = () => {
         {!guest && !isLoading && !error && (
           <div className="rsvp-message info">
             <p>Please use your invitation link to view your seat allocation.</p>
+          </div>
+        )}
+
+        {showDeclineConfirmation && (
+          <div className="rsvp-confirmation-modal">
+            <div className="rsvp-confirmation-container">
+              <h3>Are you sure?</h3>
+              <p>You are about to decline your invitation. Once submitted, this cannot be easily changed. Are you sure you cannot make it?</p>
+              <div className="confirmation-actions">
+                <button
+                  className="btn-cancel"
+                  onClick={() => setShowDeclineConfirmation(false)}
+                  disabled={isSubmitting}
+                >
+                  Keep thinking
+                </button>
+                <button
+                  className="btn-confirm-decline"
+                  onClick={() => {
+                    setShowDeclineConfirmation(false);
+                    handleDeclineRSVP();
+                  }}
+                  disabled={isSubmitting}
+                >
+                  Yes, I cannot attend
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>
