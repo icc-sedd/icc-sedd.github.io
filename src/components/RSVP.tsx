@@ -45,8 +45,7 @@ const RSVP: React.FC = () => {
     setGuest(null);
     setExistingRSVP(null);
     
-    // Clear any cached session data for this guest to get fresh data
-    sessionStorage.removeItem(`rsvp_${id}`);
+    // Don't clear localStorage - we need to preserve existing RSVP data
 
     try {
       const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
