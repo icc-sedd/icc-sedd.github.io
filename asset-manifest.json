@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8d1bdf2d.css",
-    "main.js": "/static/js/main.1b6fd231.js",
+    "main.css": "/static/css/main.db40bb11.css",
+    "main.js": "/static/js/main.613e53cd.js",
     "static/media/MAT06172.jpg": "/static/media/MAT06172.c309108db16a3396b5c5.jpg",
     "static/media/MAT05343.jpg": "/static/media/MAT05343.a657c172662cc059b856.jpg",
     "static/media/MAT05979.jpg": "/static/media/MAT05979.eae6249d13807c6a3227.jpg",
@@ -26,6 +26,7 @@
     "static/media/envelope-objects.png": "/static/media/envelope-objects.b4c009acfdb17357129c.png",
     "static/media/TAN-Angleton-Regular.ttf": "/static/media/TAN-Angleton-Regular.349b8e77ec4ca1bbe53b.ttf",
     "static/media/flower-row.png": "/static/media/flower-row.562b85871926bb2a2a98.png",
+    "static/media/gold-bow.png": "/static/media/gold-bow.faa8114d259295bb0fa8.png",
     "static/media/gold-leaves-1.png": "/static/media/gold-leaves-1.2ecc4cc292a61348f3bc.png",
     "static/media/principal-sponsors.png": "/static/media/principal-sponsors.f1c664b2d9af7e97b18d.png",
     "static/media/gold-leaves-2.png": "/static/media/gold-leaves-2.fb283ead13d7d2d56a07.png",
@@ -34,20 +35,20 @@
     "static/media/champagne-glass.png": "/static/media/champagne-glass.e0860f0430ad974abaff.png",
     "static/media/reception.png": "/static/media/reception.4058a82271c13b5bd273.png",
     "static/media/church.png": "/static/media/church.68e693dd03755970c32b.png",
+    "static/media/flower 1.png": "/static/media/flower 1.659e9c38154dd2c4933f.png",
     "static/media/candle-logo.png": "/static/media/candle-logo.97c1ac457c0ae5075b54.png",
+    "static/media/flower 2.png": "/static/media/flower 2.a21d62643af791afa979.png",
     "static/media/moon-time-regular.ttf": "/static/media/moon-time-regular.b83db42eb10b3fc7bd0f.ttf",
     "static/media/guests.png": "/static/media/guests.5f1986e48c758b2ec777.png",
-    "static/media/flower 1.png": "/static/media/flower 1.bca4ac9d5c9898d0da07.png",
     "static/media/church-gold.png": "/static/media/church-gold.f947510735006f4201cc.png",
-    "static/media/flower 2.png": "/static/media/flower 2.a2a624e5e5532f8b136e.png",
     "static/media/heart-drawing.png": "/static/media/heart-drawing.b3d4134cf55139f6121a.png",
     "static/media/leaves-minimalist-gold.png": "/static/media/leaves-minimalist-gold.92d92ed8a9132fa316e1.png",
     "index.html": "/index.html",
-    "main.8d1bdf2d.css.map": "/static/css/main.8d1bdf2d.css.map",
-    "main.1b6fd231.js.map": "/static/js/main.1b6fd231.js.map"
+    "main.db40bb11.css.map": "/static/css/main.db40bb11.css.map",
+    "main.613e53cd.js.map": "/static/js/main.613e53cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d1bdf2d.css",
-    "static/js/main.1b6fd231.js"
+    "static/css/main.db40bb11.css",
+    "static/js/main.613e53cd.js"
   ]
 }
