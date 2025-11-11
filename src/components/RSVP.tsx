@@ -275,17 +275,17 @@ const RSVP: React.FC = () => {
                   setIsUpdating(true);
                 }
               }}
-              disabled={isSubmitting || !!(existingRSVP && existingRSVP.attending === 'Yes')}
+              disabled={isSubmitting}
             >
-              {existingRSVP ? 'Update RSVP' : 'Yes, Count Me In'}
+              {existingRSVP && existingRSVP.attending === 'Yes' ? 'View/Update RSVP' : 'Yes, Count Me In'}
             </button>
 
             <button
               className="rsvp-decline-btn"
               onClick={() => setShowDeclineConfirmation(true)}
-              disabled={isSubmitting || !!(existingRSVP && (existingRSVP.attending === 'Yes' || existingRSVP.attending === 'No'))}
+              disabled={isSubmitting || !!(existingRSVP && existingRSVP.attending === 'No')}
             >
-              Sorry, I cannot make it
+              {existingRSVP && existingRSVP.attending === 'No' ? 'Already Declined' : 'Sorry, I cannot make it'}
             </button>
           </div>
         )}
