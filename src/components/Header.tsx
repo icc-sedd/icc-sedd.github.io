@@ -34,7 +34,10 @@ const Header: React.FC = () => {
   }, []);
 
   const handleCandleClick = () => {
-    setShowModal(true);
+    // Don't show modal if envelope is already opening
+    if (!isOpening) {
+      setShowModal(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -146,6 +149,7 @@ const Header: React.FC = () => {
                 alt="candle logo" 
                 className={`candle-logo ${isOpening ? 'fade-out' : ''}`}
                 onClick={handleCandleClick}
+                style={{ pointerEvents: isOpening ? 'none' : 'auto' }}
               />
             </div>
             <img 

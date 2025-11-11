@@ -49,9 +49,8 @@ const Options: React.FC = () => {
          <div className="options-row-2">
             <img src={couple1} alt="couple1" className="couple1" />
             <div className="rsvp-card" onClick={handleRSVPClick} style={{ cursor: 'pointer' }}>
-               <p className="rsvp-text">Kindly</p>
-               <p className="rsvp-text">RSVP</p>
-               <p className="rsvp-text">Here</p>
+               <p className="rsvp-text">Kindly</p>               
+               <p className="rsvp-text-bottom">RSVP Here</p>
                <img src={arrow} alt="arrow" className="gold-arrow" />
             </div>
          </div>

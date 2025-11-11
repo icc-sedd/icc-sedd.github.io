@@ -159,7 +159,7 @@ const Entourage: React.FC = () => {
           <div className="entourage-special-roles-row-bottom">
             <div className="entourage-special-role-section">
               <h3 className="entourage-special-role-subtitle">Flower Girls</h3>
-              <p className="entourage-special-role-name">Alexandra Margarette Ramos</p>
+              {/* <p className="entourage-special-role-name">🐶 Alexandra Margarette Ramos 🐶</p> */}
               <p className="entourage-special-role-name">Leticia Ambrose Francia</p>
               <p className="entourage-special-role-name">Shazeah Kylie Sanchez</p>
             </div>
