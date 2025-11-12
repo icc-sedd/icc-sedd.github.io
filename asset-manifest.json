@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.56bb0ced.css",
+    "main.css": "/static/css/main.5a4789e7.css",
     "main.js": "/static/js/main.82eaf6d5.js",
     "static/media/MAT06172.jpg": "/static/media/MAT06172.c309108db16a3396b5c5.jpg",
     "static/media/MAT05343.jpg": "/static/media/MAT05343.a657c172662cc059b856.jpg",
@@ -44,11 +44,11 @@
     "static/media/heart-drawing.png": "/static/media/heart-drawing.b3d4134cf55139f6121a.png",
     "static/media/leaves-minimalist-gold.png": "/static/media/leaves-minimalist-gold.92d92ed8a9132fa316e1.png",
     "index.html": "/index.html",
-    "main.56bb0ced.css.map": "/static/css/main.56bb0ced.css.map",
+    "main.5a4789e7.css.map": "/static/css/main.5a4789e7.css.map",
     "main.82eaf6d5.js.map": "/static/js/main.82eaf6d5.js.map"
   },
   "entrypoints": [
-    "static/css/main.56bb0ced.css",
+    "static/css/main.5a4789e7.css",
     "static/js/main.82eaf6d5.js"
   ]
 }
