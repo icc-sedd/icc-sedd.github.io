@@ -3788,22 +3788,27 @@ section#rsvp.section {
   padding: 1rem;
   border-radius: 15px;
   backdrop-filter: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.guests-section .attire-card {
+  flex-direction: row;
+  align-items: center;
 }
 
 .attire-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 10px;
   background: transparent;
   padding: 0.5rem;
 }
 
 .attire-showcase-image {
-  max-width: 100%;
+  max-width: 400px;
   height: auto;
   display: block;
   border-radius: 8px;
@@ -3812,8 +3817,15 @@ section#rsvp.section {
 
 .attire-tones {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.guests-section .attire-tones {
+  flex-direction: column;
+  justify-content: center;
 }
 
 .tones-image,
@@ -3828,9 +3840,11 @@ section#rsvp.section {
   scale: 2;
 }
 
-.tones-image
-{
- rotate: 90deg;
+.tones-image {
+  rotate: 90deg;
+  max-width: 100px;
+  width: 100px;
+  height: auto;
 }
 
 
@@ -3894,6 +3908,7 @@ section#rsvp.section {
   .attire-card {
     padding: 1rem;
     gap: 1rem;
+    flex-direction: row;
   }
 
   .attire-image-container {
@@ -3960,8 +3975,8 @@ section#rsvp.section {
 
   .attire-card {
     padding: 1rem;
-    gap: 1.2rem;
-    flex-direction: column-reverse;
+    gap: 1rem;
+    flex-direction: row;
   }
 
   .attire-image-container {
