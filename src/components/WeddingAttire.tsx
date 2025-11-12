@@ -48,7 +48,7 @@ const WeddingAttire: React.FC = () => {
   return (
     <section id="what-to-wear" className="section">
       <div className="container wedding-attire-content" ref={contentRef}>
-        <h1 className="attire-main-title">WEDDING ATTIRE</h1>        
+        <h1 className="attire-main-title">WEDDING ATTIRE</h1>
         <div className="attire-sections-wrapper">
           {/* Principal Sponsors Section */}
           <div className="attire-section">
@@ -75,17 +75,13 @@ const WeddingAttire: React.FC = () => {
         </div>
 
         {/* Message and Guests Section */}
-        <div className="attire-message-guests-wrapper">
+        <div className="attire-guests-full-wrapper">
           <div className="attire-message">
             <p>Dear Guests,</p>
             <p>We're so excited to celebrate our special day with you! To help you plan your outfit and feel comfortable, we kindly ask that you follow our dress code:</p>
-            <p>The ceremony requires the guests to wear a semi-formal attire so please dress accordingly.</p>
-            <p>Feel free to incorporate and wear your best outfit with a touch of our wedding colors!</p>
-            <p>We can't wait to see you all looking your best!</p>
-            <p>With love,<br />Sedd & Mara</p>
           </div>
 
-          {/* Guests Section */}
+          {/* Guests Section with Image */}
           <div className="attire-section guests-section">
             <h2 className="attire-section-title">Guests</h2>
             <div className="attire-card">
@@ -96,6 +92,14 @@ const WeddingAttire: React.FC = () => {
                 <img src={guestTones} alt="Guests Color Tones" className="guest-tones-image" />
               </div>
             </div>
+          </div>
+
+          {/* Closing Message */}
+          <div className="attire-message">
+            <p>The ceremony requires the guests to wear a semi-formal attire so please dress accordingly.</p>
+            <p>Feel free to incorporate and wear your best outfit with a touch of our wedding colors!</p>
+            <p>We can't wait to see you all looking your best!</p>
+            <p>With love,<br />Sedd & Mara</p>
           </div>
         </div>
       </div>
