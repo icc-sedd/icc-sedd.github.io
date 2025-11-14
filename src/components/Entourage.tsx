@@ -42,7 +42,7 @@ const Entourage: React.FC = () => {
               <p className="entourage-sponsors-name">Mr. Jesus Zapatero Jr.</p>
               <p className="entourage-sponsors-name">Mr. Onofre Fababier</p>
               <p className="entourage-sponsors-name">Mr. Ernesto Macarrubo</p>
-              <p className="entourage-sponsors-name">Mr. Romy Fababier</p>
+              <p className="entourage-sponsors-name">Mr. Romeo Barles</p>
               <p className="entourage-sponsors-name">Mr. Arnel Celis</p>
               <p className="entourage-sponsors-name">Mr. Renwil Fababier</p>
               <p className="entourage-sponsors-name">Mr. Noel Bermas</p>
